@@ -35,8 +35,9 @@ main = hakyll $ do
     match "posts/*" $ do 
         route $ customRoute $ urlPosts . toFilePath
         compile $ pandocMathCompiler
+            >>= saveSnapshot "content"
             >>= loadAndApplyTemplate "templates/post.html"    postCtx
-            >>= loadAndApplyTemplate "templates/default.html" postCtx
+            >>= loadAndApplyTemplate "templates/default.html" postCtx 
             >>= relativizeUrls
 
     match "index.html" $ do
@@ -44,15 +45,18 @@ main = hakyll $ do
         compile $ do
             posts <- recentFirst =<< loadAll "posts/*"
             let indexCtx =
-                    listField "posts" postCtx (return posts) `mappend`
+                    listField "posts" teaserCtx (return posts) `mappend`
                     constField "title" ">>="                 `mappend`
                     defaultContext
             getResourceBody
                 >>= applyAsTemplate indexCtx
-                >>= loadAndApplyTemplate "templates/default.html" indexCtx
+                >>= loadAndApplyTemplate "templates/default.html" indexCtx 
                 >>= relativizeUrls
 
     match "templates/*" $ compile templateCompiler
+
+teaserCtx = teaserField "teaser" "content" `mappend` postCtx
+
 
 pandocMathCompiler = 
     let mathExtensions = [Ext_tex_math_double_backslash,

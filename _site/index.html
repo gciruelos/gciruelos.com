@@ -19,7 +19,11 @@
             <h1>>>=</h1>
             <section class="post_list">
     
-    <a href="./propositions-as-types.html">Propositions as types - March  5, 2015</a>  <br>
+    <div class="un_post">
+        <a class="post_link" href="./propositions-as-types.html">Propositions as types</a> - March  4, 2015 <br>
+            <p>In Type Theory, <strong>propositions as types</strong> is the idea that types can be intepreted as propositions and viceversa. It is also known as the <strong>Curry-Howard isomorphism</strong> and closely related with the concept of proofs as programs, this is the reason we will use 3 languages during this post: the language of logic, of type theory and Haskell.</p>
+
+    </div>
     
 </section>
 
@@ -34,15 +38,24 @@
     </body>
 
      
-      <script type="text/x-mathjax-config">
-           MathJax.Hub.Config({TeX:{extensions: ["AMSmath.js", "AMSsymbols.js"]},
-                                    extensions:["tex2jax.js"],
-                                    tex2jax: {
-                                               inlineMath: [ ["\\(","\\)"] ],
-                                               displayMath: [ ["\\[","\\]"] ],
-                                               processEscapes: true
-                                             },
-                                    "HTML-CSS": { availableFonts: ["TeX"] }});
-      </script>
+    <script type="text/x-mathjax-config">
+         MathJax.Hub.Config({TeX:{extensions: ["AMSmath.js", "AMSsymbols.js"]},
+                                  extensions:["tex2jax.js"],
+                                  tex2jax: {
+                                             inlineMath: [ ["\\(","\\)"] ],
+                                             displayMath: [ ["\\[","\\]"] ],
+                                             processEscapes: true
+                                           },
+                                  "HTML-CSS": { availableFonts: ["TeX"] }});
+    </script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML-full"></script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-60347053-1', 'auto');
+      ga('send', 'pageview');
+    </script>
 </html>

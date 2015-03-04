@@ -1,5 +1,8 @@
 <section class="post_list">
     $for(posts)$
-    <a class="post_link" href="$url$">$title$ - $date$</a>  <br>
+    <div class="un_post">
+        <a class="post_link" href="$url$">$title$</a> - $date$ <br>
+            $teaser$
+    </div>
     $endfor$
 </section>

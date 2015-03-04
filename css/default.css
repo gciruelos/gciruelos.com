@@ -76,7 +76,17 @@ div.info {
     font-style: italic;
 }
 
+a.post_link{
+  text-decoration: none;
+  color: #336699;
+  font-weight: bold;
+}
 
+div.un_post:hover{
+    background-color: #eeeeee;
+    border-radius: 5px;
+    padding: 2px;
+}
 
 code {
   background-color: #eee;

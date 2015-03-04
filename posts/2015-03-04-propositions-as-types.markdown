@@ -5,6 +5,8 @@ url: /propositions-as-types.html
 
 In Type Theory, **propositions as types** is the idea that types can be intepreted as propositions and viceversa. It is also known as the **Curry-Howard isomorphism** and closely related with the concept of proofs as programs, this is the reason we will use 3 languages during this post: the language of logic, of type theory and Haskell.
 
+<!--more-->
+
 For a basic introduction on type thoery, you can read *Per Martin-Löf, Intuitionistic Type Theory*, or the first chapter of *Homotopy Type Theory*.
 
 So let's make the similarities explicit. 
@@ -95,7 +97,7 @@ This is the definition:
 
 What does it mean? It means that \\(P\\) is a proposition if given two proofs of \\(P\\), \\(x, y\\) then they are equal. This means we *don't care* about proofs being higher-dimensionally different, they are just proofs.
 
-
+As you can imagine, sometimes given an arbitrary type \\(A\\) we would like to work with it as if it was a mere proposition. We can actually do this, defining an operation \\(||-||\\) such that \\(||A||\\) is a mere proposition for every type \\(A\\). This is explained in detail in the section 3.7. of the book.
 
 Haskell
 -------
@@ -103,7 +105,7 @@ Haskell not only lacks dependent types, it has another problem when one tries to
 Haskell cannot avoid non-terminating programs, so \\(\\bot\\) (bottom) inhabits every type. One can argue this is a feature rather than a bug (and it is), but take a look at this:
 
 ```haskell
-data Void  -- has no constructors, thus no inhabitants, right?
+data Void                  -- has no constructors, thus no inhabitants, right?
 
 fix :: (a -> a) -> a       -- defined in Data.Function
 fix f = let x = f x in x   -- it is the least fixed point of f,
@@ -113,9 +115,9 @@ false :: Void
 false = fix (id :: Void -> Void)
 ```
 
-And it compiles. So we proved falsity. What? This happens because `fix id` will always hang, it is a nonterminating function, so for every type we have a
+And it compiles. So we proved falsity. How? This happens because `fix id` will always hang, it is a nonterminating function, so for every type we have a
 
-```
+```haskell
 inhabitant :: a
 inhabitant = fix id
 ```
@@ -123,8 +125,8 @@ inhabitant = fix id
 References
 ----------
 
-[1] Sørenson, Morten; Urzyczyn, Paweł, Lectures on the Curry-Howard Isomorphism. Chapter 4
+\[1\] Sørenson, Morten; Urzyczyn, Paweł, *Lectures on the Curry-Howard Isomorphism*. Chapter 4
 
-[2] https://coq.inria.fr/refman/Reference-Manual006.html
+\[2\] [Calculus of Indutive Constructions](https://coq.inria.fr/refman/Reference-Manual006.html)
 
-[3] Homotopy Type Theory. Chapter 1
+\[3\] *Homotopy Type Theory*. Chapter 1
