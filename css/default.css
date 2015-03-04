@@ -1,10 +1,23 @@
 @import url('http://fonts.googleapis.com/css?family=PT+Sans|IM+Fell+Double+Pica');
 
+@media only screen and (max-device-width: 480px) {
+body { 
+     margin:0px; /* remove default margin */
+     padding:0; /* remove default padding */
+     width:100%; /* take full browser width */
+     height:100%; /* take full browser height*/
+}   
+  
+}
+
+@media only screen and (min-device-width: 481px){
 body {
     width: 50%;
     margin: 0 auto;
 }
 
+
+}
 
 div#header {
     border-bottom: 2px solid black;
@@ -17,7 +30,7 @@ div#logo a {
     color: black;
     float: left;
     font-family: 'IM Fell Double Pica';
-    font-size: 18px;
+    font-size: 22px;
     font-weight: bold;
     text-decoration: none;
 }
@@ -59,6 +72,12 @@ h1 {
 h2 {
     font-family: 'IM Fell Double Pica', serif;
     font-size: 20px; 
+}
+
+
+
+td {
+    width: 7em;
 }
 
 div#content { 

@@ -20,9 +20,9 @@
             <div class="info">
     Posted on March  4, 2015
 </div>
-<p>In Type Theory, <strong>propositions as types</strong> is the idea that types can be intepreted as propositions and viceversa. It is also known as the <strong>Curry-Howard isomorphism</strong> and closely related with the concept of proofs as programs, this is the reason we will use 3 languages during this post: the language of logic, of type theory and Haskell.</p>
+<p>In Type Theory, <strong>propositions as types</strong> is the idea that types can be interpreted as propositions and vice versa. It is also known as the <strong>Curry-Howard isomorphism</strong> and closely related with the concept of proofs as programs, this is the reason we will use 3 languages during this post: the language of logic, of type theory and Haskell.</p>
 <!--more-->
-<p>For a basic introduction on type thoery, you can read <em>Per Martin-Löf, Intuitionistic Type Theory</em>, or the first chapter of <em>Homotopy Type Theory</em>.</p>
+<p>For a basic introduction on type theory, you can read <em>Per Martin-Löf, Intuitionistic Type Theory</em>, or the first chapter of <em>Homotopy Type Theory</em>.</p>
 <p>So let’s make the similarities explicit.</p>
 <table>
 <thead>
@@ -86,7 +86,7 @@
 <p>You can think a little bit about it, it is really easy:</p>
 <pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">proof ::</span> a <span class="ot">-&gt;</span> b <span class="ot">-&gt;</span> a
 proof <span class="fu">=</span> \a <span class="ot">-&gt;</span> \b <span class="ot">-&gt;</span> a</code></pre>
-<p>Note that the the language of type theory and Haskell are very similar. (Haskell isn’t really as powerful as ML type theory, that’s why there are blank spaces on the first table).</p>
+<p>Note that the language of type theory and Haskell are very similar. (Haskell isn’t really as powerful as ML type theory, that’s why there are blank spaces on the first table).</p>
 <p>Now, you should have noticed that there is something missing on the first table: negation. So let’s introduce it.</p>
 <table>
 <thead>
@@ -108,7 +108,7 @@ proof <span class="fu">=</span> \a <span class="ot">-&gt;</span> \b <span class=
 <p>The first question is easily answered, \(0\) is the type that has no constructors. So there is no haw to make up an inhabitant of \(0\). Now, why is negation defined like that? Simply because it makes sense. Lastly, how is the Void type defined in haskell? Well, it is de type with no constructors, so</p>
 <pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">data</span> <span class="dt">Void</span></code></pre>
 <p>As simple as that.</p>
-<p>Let’s do now another example. We want to prove \( p \Rightarrow \neg \neg p \). So it sufficies to find a haskell function of signature <code>a -&gt; ((a -&gt; Void) -&gt; Void)</code>. Remember that <code>-&gt;</code> is right-associative, so that is the same as <code>a -&gt; (a -&gt; Void) -&gt; Void</code>. Here is a solution,</p>
+<p>Let’s do now another example. We want to prove \( p \Rightarrow \neg \neg p \). So it suffices to find a haskell function of signature <code>a -&gt; ((a -&gt; Void) -&gt; Void)</code>. Remember that <code>-&gt;</code> is right-associative, so that is the same as <code>a -&gt; (a -&gt; Void) -&gt; Void</code>. Here is a solution,</p>
 <pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">proof ::</span> a <span class="ot">-&gt;</span> (a <span class="ot">-&gt;</span> <span class="dt">Void</span>) <span class="ot">-&gt;</span> <span class="dt">Void</span>
 proof <span class="fu">=</span> \a <span class="ot">-&gt;</span> \f <span class="ot">-&gt;</span> f a</code></pre>
 <p>Note that in the same fashion we can prove <code>a -&gt; (a -&gt; b) -&gt; b</code>. In the language of type theory, that proof would be: \[ \lambda a : A . \lambda f : A \to B .f(b) \ \ :\ \ A \to ((A \to B) \to B) \]</p>

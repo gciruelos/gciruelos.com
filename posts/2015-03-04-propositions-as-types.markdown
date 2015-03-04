@@ -3,11 +3,11 @@ title: Propositions as types
 url: /propositions-as-types.html
 ---
 
-In Type Theory, **propositions as types** is the idea that types can be intepreted as propositions and viceversa. It is also known as the **Curry-Howard isomorphism** and closely related with the concept of proofs as programs, this is the reason we will use 3 languages during this post: the language of logic, of type theory and Haskell.
+In Type Theory, **propositions as types** is the idea that types can be interpreted as propositions and vice versa. It is also known as the **Curry-Howard isomorphism** and closely related with the concept of proofs as programs, this is the reason we will use 3 languages during this post: the language of logic, of type theory and Haskell.
 
 <!--more-->
 
-For a basic introduction on type thoery, you can read *Per Martin-Löf, Intuitionistic Type Theory*, or the first chapter of *Homotopy Type Theory*.
+For a basic introduction on type theory, you can read *Per Martin-Löf, Intuitionistic Type Theory*, or the first chapter of *Homotopy Type Theory*.
 
 So let's make the similarities explicit. 
 
@@ -39,7 +39,7 @@ proof :: a -> b -> a
 proof = \a -> \b -> a
 ```
 
-Note that the the language of type theory and Haskell are very similar. (Haskell isn't really as powerful as ML type theory, that's why there are blank spaces on the first table).
+Note that the language of type theory and Haskell are very similar. (Haskell isn't really as powerful as ML type theory, that's why there are blank spaces on the first table).
 
 Now, you should have noticed that there is something missing on the first table: negation. So let's introduce it. 
 
@@ -56,7 +56,7 @@ data Void
 ```
 As simple as that. 
 
-Let's do now another example. We want to prove \\( p \\Rightarrow \\neg \\neg p \\). So it sufficies to find a haskell function of signature ```a -> ((a -> Void) -> Void)```. Remember that  ```->``` is right-associative, so that is the same as ```a -> (a -> Void) -> Void```. Here is a solution,
+Let's do now another example. We want to prove \\( p \\Rightarrow \\neg \\neg p \\). So it suffices to find a haskell function of signature ```a -> ((a -> Void) -> Void)```. Remember that  ```->``` is right-associative, so that is the same as ```a -> (a -> Void) -> Void```. Here is a solution,
 ```haskell
 proof :: a -> (a -> Void) -> Void
 proof = \a -> \f -> f a
