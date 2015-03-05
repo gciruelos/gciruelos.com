@@ -1,22 +1,11 @@
 @import url('http://fonts.googleapis.com/css?family=PT+Sans|IM+Fell+Double+Pica');
 
-@media only screen and (max-device-width: 480px) {
-body { 
-     margin:0px; /* remove default margin */
-     padding:0; /* remove default padding */
-     width:100%; /* take full browser width */
-     height:100%; /* take full browser height*/
-}   
-  
-}
 
-@media only screen and (min-device-width: 481px){
 body {
+    height: 100%;
+    max-height: 100%;
     width: 50%;
     margin: 0 auto;
-}
-
-
 }
 
 div#header {
@@ -30,7 +19,7 @@ div#logo a {
     color: black;
     float: left;
     font-family: 'IM Fell Double Pica';
-    font-size: 22px;
+    font-size: 2em;
     font-weight: bold;
     text-decoration: none;
 }
@@ -47,7 +36,7 @@ div#header #leblog {
 
 div#header #navigation a {
     color: black;
-    font-size: 18px;
+    font-size: 2em;
     font-weight: bold;
     margin-left: 12px;
     text-decoration: none;
@@ -57,7 +46,7 @@ div#header #navigation a {
 div#footer {
     border-top: solid 2px black;
     color: #555;
-    font-size: 12px;
+    font-size: 0.7em;
     margin-top: 30px;
     padding: 12px 0px 12px 0px;
     text-align: right;
@@ -66,12 +55,12 @@ div#footer {
 
 h1 {
     font-family: 'IM Fell Double Pica', serif;
-    font-size: 30px;
+    font-size: 1.75em;
 }
 
 h2 {
     font-family: 'IM Fell Double Pica', serif;
-    font-size: 20px; 
+    font-size: 1.5em; 
 }
 
 
@@ -91,7 +80,7 @@ div#content {
 div.info { 
     color: #999;
     font-family: 'IM Fell Double Pica';
-    font-size: 16px;
+    font-size: 0.6em;
     font-style: italic;
 }
 
