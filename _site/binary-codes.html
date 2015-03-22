@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>gciruelos - Binary Codes</title> 
+        <link rel="stylesheet" type="text/css" href="./css/default.css" />
+    </head>
+    <body>
+        <div id="header">
+            <div id="logo">
+                <a href="./">Gonzalo Ciruelos</a>
+            </div> 
+            <div id="leblog">
+                Blog
+            </div>
+        </div>
+        <div id="content">
+            <h1>Binary Codes</h1>
+            <div class="info">
+    Posted on March 23, 2015
+</div>
+<p>We all know we can write any number in base 2. For example, \(18_{10} = 10010_2\). So we can ask a question, are there other (nontrivial) sequences such that any natural number is the sum of a finite subset of it? The answer is yes.</p>
+<!--more-->
+<p><strong>Definition.</strong> A strictly increasing sequence \(a_n \in \mathbb{N}^{\mathbb{N}}\) is a binary code if for all \(n \in \mathbb{N}\), there exists a finite subset \(A \subset a_n\) such that \(sum(A) = n\)</p>
+<p><strong>Definition.</strong> \(n\) is written in normal form in a given binary code if the maximum of \(A \subset \{a_k\}\) is also the largest \(a_k\) such that \(a_k \leq n &lt; a_{k+1}\). (If \(a_k\) is a binary code we can write every \(n\) in normal form. Proof left to the reader).</p>
+<p>Let’s first prove that \(a_k = 2^k\) is a binary code.</p>
+<p><strong>Proof.</strong> We will use induction.The base case is trivial. For the inductive step, given \(n\) we suppose that for all \(n’ &lt; n\) there is a subset \(A’ \subset \{2^k\}_k \) such that \(n’ = sum(A’)\); and we want to show that there is a subset \(A \subset \{2^k\}_k \) such that \(n = sum(A)\).</p>
+<p>We choose the largest \(k\) such that \(2^k \leq n\). By the inductive hypothesis, there is a subset \(A’\) such that \(n - 2^k = sum(A’)\), because \(n - 2^k &lt; n\). So then we choose \(A = A’ \sqcup \{2^k\}\) and we are done.</p>
+<p>But not so fast, what if \(n - 2^k \geq 2^k\)? If that happens, \(2^k \in A’\), and we don’t want that to happen, because that means we need 2 \(2^k\) to write the number, and we can only use 0 or 1 of each. So let’s prove that can’t happen.</p>
+<p>Suppose that \(n - 2^k \geq 2^k\). Then \(n \geq 2^k + 2^k = 2^{k+1} \). But that is impossible, because k was largest natural that had thet property, and \(k+1&gt;k\).</p>
+<p>\(\blacksquare\)</p>
+<p>What did we use about \(a_k = 2^k\)? We used that \[\forall n \exists k \ \ : \ a_k \leq n &lt; a_{k+1} \land n-a_k &lt; a_k \] Or equivalently</p>
+<p>\[\forall n \exists k \ \ : \ a_k \leq n &lt; a_{k+1} \land n &lt; 2a_k \]</p>
+<p>In consequence, if we find a sequence \(a_k\) that fulfills this requirement, we know that \(a_k\) is a binary code, and the proof is the same that the one of \(a_k = 2^k\).</p>
+<h2 id="examples">Examples</h2>
+<p>Now that we proved it, finding (and proving) some binary codes is easier. (Be aware that we proved an implication, not an equivalence).</p>
+<p>We can show that the trivial code \(a_k = k\) is a binary code.</p>
+<p><strong>Proof.</strong> Given \(n\), we choose \(k = n\), so \(n \leq n &lt; n+1 \land n &lt; 2n\). \(\blacksquare\)</p>
+<p>We can also try to show that \(a_k = F_{k+2}\), where \(F_k\) is the Fibonacci sequence, is a binary code.</p>
+<p><strong>Proof.</strong> Given \(n\), we choose \(k\) to be the largest \(k\) such that \(a_k \leq n\). Then it follows \(n &lt; a_{k+1}\). But then \(n &lt; a_{k+1} = F_{k+3} &lt; 2 F_{k+2} = 2a_{k} \). \(\blacksquare\)</p>
+<p>Note that if \(\forall k  :  a_{k+1} \leq 2a_k\) and \(a_0 = 1\) then \(a_k\) is a binary code.</p>
+<p><strong>Corollary.</strong> \(a_1 = 1, a_n = p_n\) where \(p_n\) is the nth prime number is a binary code (Bertrand’s postulate).</p>
+<h2 id="bounds-and-optimality">Bounds and Optimality</h2>
+<p>In this section we will bound the growth of sequences that are binary codes.</p>
+<p>The lower bound is obvious. \(a_k = k\) is a binary code and any sequence that grows slower is not strictly increasing.</p>
+<p>You can surely suspect the upper bound is \(a_k = 2^k\), and it is.<br /><strong>Proof.</strong> \(a_0\) must always be \(1\), otherwise there is no way to represent that number. The same goes with \(a_1 = 2\). But for \(a_2\) we can choose. As we are looking for the fastest growing \(a_k\) possible, we will choose \(a_2 = 4\). Now we can represent all numbers up to \(7\). Then we do the same for the next, so \(a_3 = 8\).<br />In general, \[a_{k+1} = \sum_{i=0}^k a_i + 1\]</p>
+<p>And the solution for that is \(a_k = 2^k\). \(\blacksquare\)</p>
+<p>Now, let’s take the number \(18\) as an example, and write it in a couple of codes (in normal form).</p>
+<ul>
+<li>base 2 \(\leadsto\) 10010</li>
+<li>fibonacci \(\leadsto\) 101000</li>
+<li>prime \(\leadsto\) 10000001</li>
+<li>trivial \(\leadsto\) 100000000000000000</li>
+</ul>
+<p>So we can ask, in general, what what binary code is optimal, i.e. requires less characters to write in normal form. The math is easy, if we want to write \(n\) in normal form it will require \(k+1\) characters, where \(a_k \leq n &lt; a_{k+1}\). So let \(f\) be some extension of \(a\) to the reals. Then the number of characters required to write n with \(a_k\) in normal form is \(\lceil f^{-1}(n)\rceil\). So it is easy to see that \(a_k = 2^k\) is optimal.</p>
+<h2 id="equivalence-of-normal-binary-codes">Equivalence of normal binary codes</h2>
+<p>Now we will prove that the following statements are equivalent:</p>
+<ol style="list-style-type: decimal">
+<li>\(a_k\) is a normal binary code</li>
+<li>\(\forall n \exists k \ \ : \ a_k \leq n &lt; a_{k+1} \land n &lt; 2a_k \)</li>
+</ol>
+<p><strong>Proof.</strong> \(2. \Rightarrow 1.\) was done previously.</p>
+<p>\(1. \Rightarrow 2.\) We will suppose \(2\) is false, and imply that \(1\) is false.</p>
+<p>\[\neg (\forall n \exists k \ \ : \ a_k \leq n &lt; a_{k+1} \land n &lt; 2a_k) \iff \]</p>
+<p>\[\exists n \forall k \ \ : \ a_k &gt; n \lor n \geq a_{k+1} \lor n \geq 2a_k\]</p>
+<p>Now we take that \(n\), and choose \(k\) such that \(a_k \leq n &lt; a_{k+1}\). (We can because \(a_k\) is strictly increasing). So we know, thanks to the above proposition, that \(n \geq 2a_k\). Then \( n-a_k \geq a_k\). Then we can’t write n the way we want. \(\blacksquare\)</p>
+
+
+        </div>
+        <div id="footer">
+            <a href="https://github.com/gciruelos">github</a> |
+            Site proudly generated by
+            <a href="http://jaspervdj.be/hakyll">Hakyll</a>
+        </div>
+    </body>
+
+     
+    <script type="text/x-mathjax-config">
+         MathJax.Hub.Config({TeX:{extensions: ["AMSmath.js", "AMSsymbols.js"]},
+                                  extensions:["tex2jax.js"],
+                                  tex2jax: {
+                                             inlineMath: [ ["\\(","\\)"] ],
+                                             displayMath: [ ["\\[","\\]"] ],
+                                             processEscapes: true
+                                           },
+                                  "HTML-CSS": { availableFonts: ["TeX"] }});
+    </script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML-full"></script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-60347053-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+</html>

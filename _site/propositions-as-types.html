@@ -105,7 +105,7 @@ proof <span class="fu">=</span> \a <span class="ot">-&gt;</span> \b <span class=
 </tbody>
 </table>
 <p>This arises some questions. First, what is \(0\)? Then, why is that defined like that? And lastly, how is <code>Void</code> defined in Haskell?</p>
-<p>The first question is easily answered, \(0\) is the type that has no constructors. So there is no haw to make up an inhabitant of \(0\). Now, why is negation defined like that? Simply because it makes sense. Lastly, how is the Void type defined in haskell? Well, it is de type with no constructors, so</p>
+<p>The first question is easily answered, \(0\) is the type that has no constructors. So there is no haw to make up an inhabitant of \(0\). Now, why is negation defined like that? Simply because it makes sense. Lastly, how is the Void type defined in haskell? Well, it is the type with no constructors, so</p>
 <pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">data</span> <span class="dt">Void</span></code></pre>
 <p>As simple as that.</p>
 <p>Let’s do now another example. We want to prove \( p \Rightarrow \neg \neg p \). So it suffices to find a haskell function of signature <code>a -&gt; ((a -&gt; Void) -&gt; Void)</code>. Remember that <code>-&gt;</code> is right-associative, so that is the same as <code>a -&gt; (a -&gt; Void) -&gt; Void</code>. Here is a solution,</p>
