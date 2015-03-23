@@ -3,7 +3,7 @@ title: Binary Codes
 url: /binary-codes.html
 ---
 
-We all know we can write any number in base 2. For example, \\(18_10 = 10010_2\\). So we can ask a question, are there other (nontrivial) sequences such that any natural number is the sum of a finite subset of it? The answer is yes.
+We all know we can write any number in base 2. For example, \\(18_{10} = 10010_2\\). So we can ask a question, are there other (nontrivial) sequences such that any natural number is the sum of a finite subset of it? The answer is yes.
 
 <!--more-->
 

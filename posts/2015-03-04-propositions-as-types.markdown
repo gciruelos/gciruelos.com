@@ -50,7 +50,7 @@ Now, you should have noticed that there is something missing on the first table:
 
 This arises some questions. First, what is \\(0\\)? Then, why is that defined like that? And lastly, how is `Void` defined in Haskell?
 
-The first question is easily answered, \\(0\\) is the type that has no constructors. So there is no haw to make up an inhabitant of \\(0\\). Now, why is negation defined like that? Simply because it makes sense. Lastly, how is the Void type defined in haskell? Well, it is the type with no constructors, so
+The first question is easily answered, \\(0\\) is the type that has no constructors. So there is no way to make up an inhabitant of \\(0\\). Now, why is negation defined like that? Simply because it makes sense. Lastly, how is the Void type defined in haskell? Well, it is the type with no constructors, so
 ```haskell
 data Void
 ```
