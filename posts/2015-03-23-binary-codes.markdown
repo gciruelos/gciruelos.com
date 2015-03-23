@@ -3,13 +3,13 @@ title: Binary Codes
 url: /binary-codes.html
 ---
 
-We all know we can write any number in base 2. For example, \\(18_{10} = 10010_2\\). So we can ask a question, are there other (nontrivial) sequences such that any natural number is the sum of a finite subset of it? The answer is yes.
+We all know we can write any number in base 2. For example, \\(18_10 = 10010_2\\). So we can ask a question, are there other (nontrivial) sequences such that any natural number is the sum of a finite subset of it? The answer is yes.
 
 <!--more-->
 
 **Definition.** A strictly increasing sequence \\(a_n \\in \\mathbb{N}^{\\mathbb{N}}\\) is a binary code if for all \\(n \\in \\mathbb{N}\\), there exists a finite subset  \\(A \\subset a_n\\) such that \\(sum(A) = n\\)
 
-**Definition.** \\(n\\) is written in normal form in a given binary code if the maximum of \\(A \\subset \\{a_k\\}\\) is also the largest \\(a_k\\) such that \\(a_k \\leq n < a_{k+1}\\). (If \\(a_k\\) is a binary code we can write every   \\(n\\) in normal form. Proof left to the reader).
+**Definition.** \\(n\\) is written in normal form in a given binary code if the maximum of \\(A \\subset \\{a_k\\}\\) is also the largest \\(a_k\\) such that \\(a_k \\leq n < a_{k+1}\\). \\(a_k\\) is a normal binary code if we can write every  \\(n\\) in normal form.
 
 Let's first prove that \\(a_k = 2^k\\) is a binary code.
 
@@ -78,7 +78,7 @@ Now, let's take the number \\(18\\) as an example, and write it in a couple of c
 * trivial \\(\\leadsto\\) 100000000000000000
 
 So we can ask, in general, what what binary code is optimal, i.e. requires less characters to write in normal form. The math is easy, if we want to write \\(n\\) in normal form it will require \\(k+1\\) characters, where \\(a_k \\leq n < a_{k+1}\\).
-So let \\(f\\) be some extension of \\(a\\) to the reals. Then the number of characters required to write n with \\(a_k\\) in normal form is \\(\\lceil f^{-1}(n)\\rceil\\). So it is easy to see that \\(a_k = 2^k\\) is optimal.
+  So let \\(f\\) be some extension of \\(a\\) to the reals. Then the number of characters required to write n with \\(a_k\\) in normal form is \\(\\lceil f^{-1}(n)\\rceil\\). Based on what we said before, we can conclude that at best (using base 2) we will have to use \\(\\lceil\\log_2(n)\\rceil\\) characters to write n.
 
 
 
@@ -87,18 +87,27 @@ Equivalence of normal binary codes
 
 Now we will prove that the following statements are equivalent:
 
-1. \\(a_k\\) is a normal binary code
-2. \\(\\forall n \\exists k \\ \\ : \\ a_k \\leq n < a_{k+1}  \\land n < 2a_k \\)
-
-**Proof.**  \\(2. \\Rightarrow 1.\\) was done previously.
-
-\\(1. \\Rightarrow 2.\\) We will suppose \\(2\\) is false, and imply that \\(1\\) is false.
+1. \\(a_k\\) is a binary code
+2. \\(a_k\\) is a normal binary code
 
 
-\\[\\neg (\\forall n \\exists k \\ \\ : \\ a_k \\leq n < a_{k+1}  \\land n < 2a_k)  \\iff \\]
+**Proof.**  \\(2. \\Rightarrow 1.\\) trivial.
 
-\\[\\exists n \\forall k \\ \\ : \\ a_k > n \\lor n \\geq a_{k+1} \\lor n \\geq 2a_k\\]
+\\(1. \\Rightarrow 2.\\) 
+Given \\(a_k\\) binary code and \\(n\\), we want to show that we can choose a subset \\(A \\subset \\{a_k\\}\\) such that \\(sum(A) = n\\) and \\(a_k \\leq n < a_{k+1} \\Rightarrow a_k \\in A\\).
 
 
-Now we take that \\(n\\), and choose \\(k\\) such that \\(a_k \\leq n < a_{k+1}\\). (We can because \\(a_k\\) is strictly increasing). So we know, thanks to the above proposition, that \\(n \\geq 2a_k\\). Then \\( n-a_k \\geq a_k\\). Then we can't write n the way we want.
+Take \\(l\\), and suppose with all \\(\\{a_0, ..., a_l\\}\\) we can represent \\(\\{1, ..., m\\}\\) where \\(m = \\sum_{i\\leq l} a_i\\)
+
+Then \\(a_l < a_{l+1} \\leq m+1 \\), so the representable numbers are \\(\\{1, ..., m, m+1, ..., m+a_{l+1}\\}\\). Suppose \\(m < n \\leq m + a_{l+1} \\). (We actually choose \\(l\\) so that it fulfills that requierement).
+
+Now there are two cases, the last \\(a_k\\) before \\(n\\) is \\(a_{l+1}\\) or it is greater than it.
+
+Suppose it is \\(a_{l+1}\\). Then \\(n-a_{l+1} \\leq m\\). So \\(n\\) can be represented with \\(a_{l+1}\\) and some combination of \\(\\{a_0, ..., a_l\\}\\), what we wished to show.
+
+
+The other case is even easier, lets call \\(a_k\\) the largest term less than \\(n\\). As we said, \\(a_k > a_{l+1}\\), so \\(n-a_k < n - a_{l+1} < m\\) and the proof follows as before.
 \\(\\blacksquare\\)
+
+
+
