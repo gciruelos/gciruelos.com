@@ -13,14 +13,14 @@ We all know we can write any number in base 2. For example, \\(18_{10} = 10010_2
 
 Let's first prove that \\(a_k = 2^k\\) is a binary code.
 
-**Proof.** We will use induction.The base case is trivial.
+**Proof.** We will use induction. The base case is trivial.
 For the inductive step, given \\(n\\) we suppose that for all \\(n' < n\\) there is a subset \\(A' \\subset \\{2^k\\}_k \\)  such that \\(n' = sum(A')\\); and we want to show that there is a subset  \\(A \\subset \\{2^k\\}_k \\) such that \\(n = sum(A)\\).
 
 We choose the largest \\(k\\) such that \\(2^k \\leq n\\). By the inductive hypothesis, there is a subset \\(A'\\) such that \\(n - 2^k = sum(A')\\), because \\(n - 2^k < n\\). So then we choose \\(A = A' \\sqcup \\{2^k\\}\\) and we are done.
 
 But not so fast, what if \\(n - 2^k \\geq 2^k\\)? If that happens, \\(2^k \\in A'\\), and we don't want that to happen, because that means we need 2 \\(2^k\\) to write the number, and we can only use 0 or 1 of each. So let's prove that can't happen.     
 
-Suppose that  \\(n - 2^k \\geq 2^k\\). Then  \\(n \\geq 2^k + 2^k = 2^{k+1} \\). But that is impossible, because k was largest natural that had thet property, and \\(k+1>k\\).
+Suppose that  \\(n - 2^k \\geq 2^k\\). Then  \\(n \\geq 2^k + 2^k = 2^{k+1} \\). But that is impossible, because k was largest natural that had that property, and \\(k+1>k\\).
 
 \\(\\blacksquare\\)
 
@@ -70,14 +70,14 @@ In general,
 And the solution for that is \\(a_k = 2^k\\).
 \\(\\blacksquare\\)
 
-Now, let's take the number \\(18\\) as an example, and write it in a couple of codes (in normal form).
+Now, let's take the number \\(18\\) as an example, and write it in a handful of codes (in normal form).
 
 * base 2 \\(\\leadsto\\) 10010
 * fibonacci \\(\\leadsto\\) 101000
 * prime \\(\\leadsto\\) 10000001
 * trivial \\(\\leadsto\\) 100000000000000000
 
-So we can ask, in general, what what binary code is optimal, i.e. requires less characters to write in normal form. The math is easy, if we want to write \\(n\\) in normal form it will require \\(k+1\\) characters, where \\(a_k \\leq n < a_{k+1}\\).
+So we can ask, in general, which binary code is optimal, i.e. requires less characters to write in normal form. The math is easy, if we want to write \\(n\\) in normal form it will require \\(k+1\\) characters, where \\(a_k \\leq n < a_{k+1}\\).
   So let \\(f\\) be some extension of \\(a\\) to the reals. Then the number of characters required to write n with \\(a_k\\) in normal form is \\(\\lceil f^{-1}(n)\\rceil\\). Based on what we said before, we can conclude that at best (using base 2) we will have to use \\(\\lceil\\log_2(n)\\rceil\\) characters to write n.
 
 
