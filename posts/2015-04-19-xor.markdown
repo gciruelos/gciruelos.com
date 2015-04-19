@@ -3,7 +3,7 @@ title: XOR
 url: xor.html
 ---
 
-In this post we will talk about xor. Xor is a logical operator that outputs  *true* when the two input values are different, and *false* otherwise. It is usually simbolized with the \\(\\oplus\\) symbol.
+In this post we will talk about xor. Xor is a logical operator that outputs  *true* when the two input values are different, and *false* otherwise. It is usually simbolized with \\(\\oplus\\).
 
 <!--more-->
 
@@ -12,19 +12,21 @@ Given that represent natural numbers (and integers) in binary, we can also do *b
 Properties
 ----------
 
-Let's first see some of the properties of \\(\\oplus\\). 
+First we should see some of the properties of \\(\\oplus\\). 
 
 * \\(x \\oplus x = 0\\)
 * \\(x \\oplus 0 = x\\)
 * \\(x \\oplus y = y \\oplus x \\)
 * \\((x \\oplus y) \\oplus z = x \\oplus (y \\oplus z)\\)
 
-All of these are really simple to prove. Note that these properties implies that \\((\\mathbb{N}, \\oplus)\\) is a group. More on this later.
+All of these are really simple to prove. Note that these properties implies that \\((\\mathbb{N}, \\oplus)\\) is an abelian group. More on this later.
 
 OLOLO
 -----
 
 To start appreciating how useful \\(\\oplus\\) is, we can do this [spoj problem](http://www.spoj.com/problems/OLOLO/). Obviously, **spoiler alert**, I'm going to solve it.
+
+**Solution**
 
 Suppose the stream of positive integers is something like this \\((p_1, p_2, ..., p_i,..., p_N)\\), where every element is repeated twice, except \\(p_i\\)that is repeated once.
 
@@ -101,7 +103,31 @@ So one can think about Nim as several Nims with only 1 heap being played simulta
 
 This concept is called sum of games, and if \\(G_1\\) and \\(G_2\\) are games, the game of playing them simultaneously is \\((G_1, G_2)\\).
 
-The **Sprague-Grundy theorem** says that \\(g((G_1, G_2)) = g(G_1) \\oplus g(G_2)\\). Yes, that is a xor, though in this context it is called Nim-sum. Again for a proof you can see [1], but it is very simple.
+The **Sprague-Grundy theorem** says that \\(g((G_1, G_2)) = g(G_1) \\oplus g(G_2)\\). Yes, that is a xor, surprisingly enough (though in this context it is called Nim-sum). Again for a proof you can see [1], but it is very simple.
+
+XOR cipher
+----------
+
+Using the same properties we used over and over again throughout this post, we can desing a cipher to encode messages. 
+Suppose you have your message written in a chain of 0's and 1's called \\(M\\). You can choose a random chain of 0's and 1's of the same length \\(X\\) (the key), and bitwise xor them, so \\(E = M \\oplus X\\).
+
+So \\(E\\) is the encoded message. Then, if you want to decode it, all you have to do is xor it with \\(X\\).
+\\[E \\oplus X = (M \\oplus X) \\oplus X = M \\oplus (X \\oplus X) = M \\oplus 0 = M\\]
+
+The bad thing about this cipher is that if an attacker gets \\(M\\), the message, and  \\(E\\), the encoded message, he can very easily get the key, simply because
+\\[M \\oplus E = M \\oplus (M \\oplus X) = X\\]
+
+Next there is a simple program that implements the cipher
+
+```C
+void xor_cypher(char * msg, const char * key, int n){
+  int i;
+  for(i = 0; i<n; i++){
+    msg[i] ^= key[i];
+  }
+}
+```
+
 
 
 
