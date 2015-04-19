@@ -20,20 +20,21 @@
             <div class="info">
     Posted on April 19, 2015
 </div>
-<p>In this post we will talk about xor. Xor is a logical operator that outputs <em>true</em> when the two input values are different, and <em>false</em> otherwise. It is usually simbolized with the \(\oplus\) symbol.</p>
+<p>In this post we will talk about xor. Xor is a logical operator that outputs <em>true</em> when the two input values are different, and <em>false</em> otherwise. It is usually simbolized with \(\oplus\).</p>
 <!--more-->
 <p>Given that represent natural numbers (and integers) in binary, we can also do <em>bitwise</em> xor, i.e., xoring bit by bit. Then, for example \(5 \oplus 3 = 101_2 \oplus 011_2 = 110_2 = 6\)</p>
 <h2 id="properties">Properties</h2>
-<p>Let’s first see some of the properties of \(\oplus\).</p>
+<p>First we should see some of the properties of \(\oplus\).</p>
 <ul>
 <li>\(x \oplus x = 0\)</li>
 <li>\(x \oplus 0 = x\)</li>
 <li>\(x \oplus y = y \oplus x \)</li>
 <li>\((x \oplus y) \oplus z = x \oplus (y \oplus z)\)</li>
 </ul>
-<p>All of these are really simple to prove. Note that these properties implies that \((\mathbb{N}, \oplus)\) is a group. More on this later.</p>
+<p>All of these are really simple to prove. Note that these properties implies that \((\mathbb{N}, \oplus)\) is an abelian group. More on this later.</p>
 <h2 id="ololo">OLOLO</h2>
 <p>To start appreciating how useful \(\oplus\) is, we can do this <a href="http://www.spoj.com/problems/OLOLO/">spoj problem</a>. Obviously, <strong>spoiler alert</strong>, I’m going to solve it.</p>
+<p><strong>Solution</strong></p>
 <p>Suppose the stream of positive integers is something like this \((p_1, p_2, …, p_i,…, p_N)\), where every element is repeated twice, except \(p_i\)that is repeated once.</p>
 <p>Now we can xor all those positive integers, like</p>
 <p>\[p_1 \oplus p_2 \oplus … \oplus p_i \oplus …\oplus p_N\]</p>
@@ -68,7 +69,18 @@
 <p>One can show (I won’t do it here, you can check it in [1]) that if a position \(x\) in a game is a P position, i.e., the next player loses, then \(g(x) = 0\) and viceversa.</p>
 <p>Now, the important thing about this function is the concept of <em>sum of games</em>. Some games are very hard to analyze on their own, for example <a href="http://en.wikipedia.org/wiki/Nim">Nim</a>. So one can think about Nim as several Nims with only 1 heap being played simultaneously.</p>
 <p>This concept is called sum of games, and if \(G_1\) and \(G_2\) are games, the game of playing them simultaneously is \((G_1, G_2)\).</p>
-<p>The <strong>Sprague-Grundy theorem</strong> says that \(g((G_1, G_2)) = g(G_1) \oplus g(G_2)\). Yes, that is a xor, though in this context it is called Nim-sum. Again for a proof you can see [1], but it is very simple.</p>
+<p>The <strong>Sprague-Grundy theorem</strong> says that \(g((G_1, G_2)) = g(G_1) \oplus g(G_2)\). Yes, that is a xor, surprisingly enough (though in this context it is called Nim-sum). Again for a proof you can see [1], but it is very simple.</p>
+<h2 id="xor-cipher">XOR cipher</h2>
+<p>Using the same properties we used over and over again throughout this post, we can desing a cipher to encode messages. Suppose you have your message written in a chain of 0’s and 1’s called \(M\). You can choose a random chain of 0’s and 1’s of the same length \(X\) (the key), and bitwise xor them, so \(E = M \oplus X\).</p>
+<p>So \(E\) is the encoded message. Then, if you want to decode it, all you have to do is xor it with \(X\). \[E \oplus X = (M \oplus X) \oplus X = M \oplus (X \oplus X) = M \oplus 0 = M\]</p>
+<p>The bad thing about this cipher is that if an attacker gets \(M\), the message, and \(E\), the encoded message, he can very easily get the key, simply because \[M \oplus E = M \oplus (M \oplus X) = X\]</p>
+<p>Next there is a simple program that implements the cipher</p>
+<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> xor_cypher(<span class="dt">char</span> * msg, <span class="dt">const</span> <span class="dt">char</span> * key, <span class="dt">int</span> n){
+  <span class="dt">int</span> i;
+  <span class="kw">for</span>(i = <span class="dv">0</span>; i&lt;n; i++){
+    msg[i] ^= key[i];
+  }
+}</code></pre>
 <h2 id="other-interesting-but-not-so-useful-properties">Other interesting-but-not-so-useful properties</h2>
 <ul>
 <li><p><strong>A field over \(\mathbb{N}\)</strong>. We saw earlier that \((\mathbb{N}, \oplus)\) is a group. So if we can find another operation that satisfies the field axioms, we can get a field. This is difficult, yet possible. John Conway did it, and a detailed text about this can be found at [2].</p></li>
