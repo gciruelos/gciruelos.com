@@ -7,4 +7,4 @@ build:
 	$(SITE) build
 
 clean:
-	rm -rf _cache _site site.hi site.o site
+	rm -rf _cache _site dist
