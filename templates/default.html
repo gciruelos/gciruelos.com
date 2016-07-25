@@ -10,7 +10,7 @@
     <body>
         <div id="header">
             <div id="logo">
-                <a href="/">Gonzalo Ciruelos</a>
+                <a href="/" id="blogname">Blog</a>
             </div> 
             <div id="leblog">
                 Blog
@@ -39,6 +39,21 @@
                                   "HTML-CSS": { availableFonts: ["TeX"] }});
     </script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML-full"></script>
+    <script type="text/javascript">
+        var names = {
+            'en' : 'Right Wrong',
+            'es' : 'Bien Mal',
+            'fr' : 'Bien Mal',
+            'it' : 'Bene Sbagliato',
+            'ru' : 'Верно Неправильный',
+        }
+
+        var userLang = navigator.language || navigator.userLanguage;
+        var blogName = '';
+        if (userLang.length < 2) { blogName = names['en']; }
+        else { blogName = names[userLang.substring(0,2)]; }
+        document.getElementById('blogname').innerHTML = blogName + ' '+ userLang;
+    </script>
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
