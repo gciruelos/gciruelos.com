@@ -111,6 +111,10 @@ tr.odd {
 .gist-meta{font-family:Helvetica,Arial,sans-serif;font-size:13px !important}
 .gist-meta a{color:#26a !important;text-decoration:none}
 .gist-meta a:hover{color:#0e4071 !important}
+.gist .blob-wrapper.data {
+   max-height:600px;
+   overflow:auto;
+}
 
 code {
   background-color: #eee;
