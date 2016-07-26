@@ -1,6 +1,6 @@
 ---
 title: Propositions as types
-url: /propositions-as-types.html
+url: propositions-as-types.html
 ---
 
 In Type Theory, **propositions as types** is the idea that types can be interpreted as propositions and vice versa. It is also known as the **Curry-Howard isomorphism** and closely related with the concept of proofs as programs, this is the reason we will use 3 languages during this post: the language of logic, of type theory and Haskell.

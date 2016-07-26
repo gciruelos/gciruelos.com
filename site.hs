@@ -18,7 +18,7 @@ urlPosts = sacarFecha . sacarBarra . htmlExtension
 
 main :: IO ()
 main = hakyll $ do
-    match "images/*" $ do
+    match "images/**" $ do
         route   idRoute
         compile copyFileCompiler
 
@@ -30,7 +30,7 @@ main = hakyll $ do
         route   idRoute
         compile copyFileCompiler
     
-    match (fromList ["about.rst", "robots.txt"]) $ do
+    match (fromList ["about.markdown"]) $ do
         route   $ setExtension "html"
         compile $ pandocCompiler
             >>= loadAndApplyTemplate "templates/default.html" defaultContext

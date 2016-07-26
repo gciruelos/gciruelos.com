@@ -1,6 +1,6 @@
 ---
 title: Linear Recurrences
-url: /linear-recurrences.html
+url: linear-recurrences.html
 ---
 
 
