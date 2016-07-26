@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <title>gciruelos - $title$</title> 
+        <title>$title$</title> 
         <link rel="stylesheet" type="text/css" href="/css/default.css" />
     </head>
     <body>
@@ -12,9 +12,7 @@
             <div id="logo">
                 <a href="/" id="blogname">Blog</a>
             </div> 
-            <div id="leblog">
-                Blog
-            </div>
+            <br/>
         </div>
         <div id="content">
             <h1>$title$</h1>
@@ -26,6 +24,28 @@
             <a href="http://jaspervdj.be/hakyll">Hakyll</a>
         </div>
     </body>
+    <script type="text/javascript">
+        var names = {
+            'en' : 'Right Wrong',
+            'es' : 'Bien Mal',
+            'fr' : 'Bien Mal',
+            'it' : 'Giusto Sbagliato',
+            'pt' : 'Certo Errado',
+            'ru' : 'Правильно Не Правильно',
+        };
+
+        var userLangs = navigator.languages.concat(['en']);
+        console.log(userLangs);
+        var blogName = '';
+        for (var i = 0; i < userLangs.length; i++) {
+            var possibleName = names[userLangs[i].substring(0,2)];
+            if (possibleName != undefined) {
+                blogName = possibleName;
+                break;
+            }
+        }
+        document.getElementById('blogname').innerHTML = blogName;
+    </script>
 
      
     <script type="text/x-mathjax-config">
@@ -39,21 +59,6 @@
                                   "HTML-CSS": { availableFonts: ["TeX"] }});
     </script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML-full"></script>
-    <script type="text/javascript">
-        var names = {
-            'en' : 'Right Wrong',
-            'es' : 'Bien Mal',
-            'fr' : 'Bien Mal',
-            'it' : 'Bene Sbagliato',
-            'ru' : 'Верно Неправильный',
-        }
-
-        var userLang = navigator.language || navigator.userLanguage;
-        var blogName = '';
-        if (userLang.length < 2) { blogName = names['en']; }
-        else { blogName = names[userLang.substring(0,2)]; }
-        document.getElementById('blogname').innerHTML = blogName + ' '+ userLang;
-    </script>
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
