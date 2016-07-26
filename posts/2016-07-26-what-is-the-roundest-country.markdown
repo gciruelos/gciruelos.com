@@ -17,6 +17,7 @@ Note that:
 
 * For all \\(C\\), \\(0 \\leq roundness(C) \\leq 1 \\).
 * If \\(C\\) is a circle, then taking \\(D(x,r) = C\\) maximizes the formula, so \\(roundness(C) = 1\\).
+* If \\(roundness(C) = 1\\), then \\(C\\) is a circle, because it overlaps completely with \\(D(x,r)\\), for some \\(x\\) and \\(r\\).
 
 Let's see the results and then we will see the code I used to get them.
 
@@ -299,4 +300,9 @@ Code
 If you want to see the details of the implementation, feel free to take a look at the code. It outputs code to generate the table in this post, it is easy to change it to get the .png files.
 
 <script src="https://gist.github.com/gciruelos/21f9c1dcbdee67d212319d75855544dc.js"></script>
+
+Epilogue
+--------
+
+The idea of this post came from a [great post](http://pappubahry.com/misc/rectangles/) that analyzes the *rectangularness* of countries. We both use gradient descent, to find an approximated solution to our problems, altough the code is completely different.
 
