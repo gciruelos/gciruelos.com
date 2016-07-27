@@ -3,9 +3,9 @@ title: What is the roundest country?
 url: what-is-the-roundest-country.html
 ---
 
-We can define *roundness* in many ways. For example, as you may know, the circle is the shape that, with a fixed perimeter, maximizes the area. This definition has many problems. One of the problems is that countries generally have chaotic perimeters (also known as borders), so they tend to be much longer than they seem to be.
+We can define *roundness* in many ways. For example, as you may know, the circle is the shape that given a fixed perimeter maximizes the area. This definition has many problems. One of the problems is that countries generally have chaotic perimeters (also known as borders), so they tend to be much longer than they seem to be.
 
-For that reason, we have to define roundness some other way. We represent countries as a plane region, i.e., a set \\(C \\subset \\mathbb{R}^2\\). I will define its roundness as
+For that reason, we have to define roundness some other way. We represent countries as a plane region, i.e., a compact set \\(C \\subset \\mathbb{R}^2\\). I will define its roundness as
 
 \\[ roundness(C) = \\max_{x \\in \\mathbb{R}^2, r \\in \\mathbb{R}_{>0}} \\frac{area(C \\cap D(x,r))}{\\max \\{ area(D(x,r)), area(C) \\} }\\]
 
