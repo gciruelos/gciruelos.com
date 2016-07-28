@@ -7,7 +7,7 @@ In this post we will talk about xor. Xor is a logical operator that outputs  *tr
 
 <!--more-->
 
-Given that represent natural numbers (and integers) in binary, we can also do *bitwise* xor, i.e., xoring bit by bit. Then, for example \\(5 \\oplus 3 = 101_2 \\oplus 011_2 = 110_2 = 6\\)
+Given that we can represent natural numbers (and integers) in binary, we can also do *bitwise* xor, i.e., xoring bit by bit. Then, for example \\(5 \\oplus 3 = 101_2 \\oplus 011_2 = 110_2 = 6\\)
 
 Properties
 ----------
@@ -25,6 +25,14 @@ OLOLO
 -----
 
 To start appreciating how useful \\(\\oplus\\) is, we can do this [spoj problem](http://www.spoj.com/problems/OLOLO/). Obviously, **spoiler alert**, I'm going to solve it.
+
+>Onotole has a lot of pyani. Each pyani has a number, writing on it. Pyanis with equal numbers are indistinguishable. Onotole knows everything, so, he knows that each pyani appeared twice, and only one pyani is unique. He wants to get вздръжни эффект, and he needs the unique pyani. Given the list of pyanis denote which one of them appeared once (it is guaranteed that other pyanis appeared twice).  
+>**Input**  
+>First line of input contains number of pyanis N<=500 000. Next N lines contain a single positive integer 1 <= Pi <= 10^9.  
+>**Output**  
+>Output one positive integer on pyani, which appeared once.
+
+
 
 **Solution**
 
@@ -71,13 +79,13 @@ But what if the number of squares is not a power of two? I don't know, it is a n
 Assembly
 --------
 
-If you ever programmed in assembly, you must have seen some instruction like
+If you ever programmed in assembly, you must have seen this instruction
 
 ```nasm
 xor rax, rax
 ```
 
-And you must have wondered why it was like that instead a more sane
+and you must have wondered why it was like that instead a more sane
 
 ```nasm
 mov rax, 0
@@ -85,7 +93,7 @@ mov rax, 0
 
 With a little gdb and googling, one can find out that ```xor rax, rax``` compiles to ```48 31 c0``` in machine code, while ```xor rax, 0``` compiles to ```b8 00 00 00 00```.
 
-So the first instruction not only generated less code, it is faster to execute, because the CPU has to fetch less data from memory. This is another, very used, advantage of xor.
+So the first instruction not only generated less code, it is faster to execute, because the CPU has to fetch less data from memory. This is another very used advantage of xor.
 
 Game Theory
 -----------
@@ -96,19 +104,19 @@ In Combinatorial Game Theory there is a very important function called the Sprag
 
 Where \\(mex\\) is the minimum excluded natural of the set and \\(F(x)\\) the all the possible following positions from \\(x\\).
 
-One can show (I won't do it here, you can check it in [1]) that if a position \\(x\\) in a game is a P position, i.e., the next player loses, then \\(g(x) = 0\\) and viceversa.
+One can show (I won't do it here, you can check it in [1]) that if a position \\(x\\) in a game is a P position, i.e. the next player loses, then \\(g(x) = 0\\) and viceversa.
 
 Now, the important thing about this function is the concept of *sum of games*. Some games are very hard to analyze on their own, for example [Nim](http://en.wikipedia.org/wiki/Nim). 
 So one can think about Nim as several Nims with only 1 heap being played simultaneously. 
 
-This concept is called sum of games, and if \\(G_1\\) and \\(G_2\\) are games, the game of playing them simultaneously is \\((G_1, G_2)\\).
+This concept is called sum of games, and if \\(G_1\\) and \\(G_2\\) are games the game of playing them simultaneously is \\((G_1, G_2)\\).
 
-The **Sprague-Grundy theorem** says that \\(g((G_1, G_2)) = g(G_1) \\oplus g(G_2)\\). Yes, that is a xor, surprisingly enough (though in this context it is called Nim-sum). Again for a proof you can see [1], but it is very simple.
+The **Sprague-Grundy theorem** says that \\(g((G_1, G_2)) = g(G_1) \\oplus g(G_2)\\). Yes, that is a xor, surprisingly enough — though in this context it is called Nim-sum. Again for a proof you can see [1], but it is very simple.
 
 XOR cipher
 ----------
 
-Using the same properties we used over and over again throughout this post, we can desing a cipher to encode messages. 
+Using the same properties we used over and over again throughout this post, we can desing a cipher to encode messages.
 Suppose you have your message written in a chain of 0's and 1's called \\(M\\). You can choose a random chain of 0's and 1's of the same length \\(X\\) (the key), and bitwise xor them, so \\(E = M \\oplus X\\).
 
 So \\(E\\) is the encoded message. Then, if you want to decode it, all you have to do is xor it with \\(X\\).
@@ -122,7 +130,7 @@ Next there is a simple program that implements the cipher
 ```C
 void xor_cypher(char * msg, const char * key, int n){
   int i;
-  for(i = 0; i<n; i++){
+  for (i = 0; i < n; i++) {
     msg[i] ^= key[i];
   }
 }

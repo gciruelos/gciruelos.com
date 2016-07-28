@@ -14,10 +14,16 @@ A linear recurrence is a linear equation that recursively defines a sequence. An
 
 In general, a linear recurrence is a sequence \\(\\{a_n\\}_n\\) given by base cases and equations
 
-\\[a_1 = x_1, a_2 = x_k, ..., a_k = x_k\\]
+\\[a_1 = x_1\\]
+\\[a_2 = x_k\\]
+\\[...\\]
+\\[a_k = x_k\\]
 \\[a_n = b_1 a_{n-1} + ... + b_k a_{n-k}\\]
 
 Notice that if the recurrence uses \\(k\\) previous terms, we need to have exactly \\(k\\) base cases, less won't be enough and more would be redundant (it can even be contradictory).
+
+
+Now, we would like to solve this recurrence, that is, obtain a way to compute \\(a_n\\) for any \\(n \\in \\mathbb{N}\\) without having to compute all previous terms. We would like this method to be fast in terms of complexity, too.
 
 
 Enter the Matrix
@@ -31,7 +37,7 @@ It is very easy to see that
 
 \\[F^n \\begin{bmatrix} 0 \\\\ 1 \\end{bmatrix} = \\begin{bmatrix} F_n \\\\ F_{n+1} \\end{bmatrix} \\]
 
-Now, we all know there are [several ways of multiplying matrices](https://en.wikipedia.org/wiki/Matrix_multiplication#Algorithms_for_efficient_matrix_multiplication). So throwing some divide & conquer at the problem, we can compute the n'th Fibonacci number in \\(O(log(n)\\), supposing matrix multiplication is constant (as every matrix is of size \\(2 \\times 2\\) we can assume that).
+Now, we all know there are [several ways of multiplying matrices](https://en.wikipedia.org/wiki/Matrix_multiplication#Algorithms_for_efficient_matrix_multiplication). So throwing some divide & conquer at the problem, we can compute the n-th Fibonacci number in \\(O(log(n))\\), supposing matrix multiplication is constant (as every matrix is of size \\(2 \\times 2\\) we can assume that).
 
 But we can do better than that. What if we could calculate \\(F^n\\) even faster? Well, we can.
 
