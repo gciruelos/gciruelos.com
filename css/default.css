@@ -114,6 +114,25 @@ tr.odd {
       background-color:#eeeeee;
 }
 
+span.reverse {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+}
+
+
+a#back_to_top{
+  position:fixed;
+  top:0;
+  z-index:5;
+  background:#999;
+  display:block;
+  padding:0.5em;
+  text-align:center;
+  width:100%;
+}
+
+
+
 .gist{font-size:13px;line-height:18px;margin-bottom:20px;width:100%}
 .gist pre{font-family:Menlo,Monaco,'Bitstream Vera Sans Mono','Courier New',monospace !important}
 .gist-meta{font-family:Helvetica,Arial,sans-serif;font-size:13px !important}
