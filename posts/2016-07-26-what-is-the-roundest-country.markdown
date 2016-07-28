@@ -276,11 +276,11 @@ Then, a country will be represented as a finite union of polygons, one polygon p
 
 To read the .shp file I used the [pyshp](https://pypi.python.org/pypi/pyshp) library.
 
-There's a small problem too that I have to talk about. We cannot use those \\((x_i, y_i)\\) directly to draw the countries in a plane because they are in WGS84 format (a very accurate longitude-latitude system), so we would be doing a Mercator projection of the earth, which everyone knows is really bad. 
+There's a small problem too that I have to talk about. We cannot use those \\((x_i, y_i)\\) directly to draw the countries in a plane because they are in WGS84 format (a very accurate longitude-latitude system), so we would be doing an [equirectangular projection](https://en.wikipedia.org/wiki/Equirectangular_projection) of the Earth, which really distorts a lot of countries. 
 
 So what, for each country, I transform its points from the Mercator projection to an azimutal projection centered in some point that depends on the country in question.
 
-That point is obtained by computing the midpoint of two random points from the border of the country. This is not the best (if the country is not convex, then the midpoint isn't necessarily inside it), but it works.
+That point is obtained by computing the midpoint of two random points from the border of the country. This is not the best (if the country is not convex, then the midpoint isn't necessarily inside it), but it works pretty well.
 
 In order to do all the transformations I used the [pyproj](https://pypi.python.org/pypi/pyproj) library.
 
