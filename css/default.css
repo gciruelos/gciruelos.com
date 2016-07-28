@@ -7,9 +7,26 @@ html{
   overflow-x: hidden; 
 }
 body {
-margin:40px
-auto;max-width:650px;line-height:1.6;font-size:18px;color:#444;padding:0
-10px
+margin:40px auto;
+max-width:650px;
+line-height:1.6;
+font-size:18px;
+color:#444;
+padding:0 10px
+}
+@media only screen 
+  and (min-device-width: 1px) 
+  and (max-device-width: 700px) 
+  and (-webkit-min-device-pixel-ratio: 2) { 
+body {
+margin:40px auto;
+max-width:90%;
+line-height:1.6;
+font-size:18px;
+color:#444;
+padding:0 10px
+}
+
 }
 
 h1,h2,h3{line-height:1.2}
