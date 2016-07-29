@@ -29,7 +29,7 @@ Note that:
 * If \\(C\\) is a circle, then taking \\(D(x,r) = C\\) maximizes the formula, so \\(roundness(C) = 1\\).
 * If \\(roundness(C) = 1\\), then \\(C\\) is a circle, because it overlaps completely with \\(D(x,r)\\), for some \\(x\\) and \\(r\\).
 
-Let's see the results and then we will see the code I used to get them.
+Let's see the results and then we will see the code I used to get them. You can scroll to see all the results, and sort by any column you like.
 
 
 <style>
