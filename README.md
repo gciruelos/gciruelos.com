@@ -1,7 +1,3 @@
-First log in to the server:
-
-    ssh -p <port> <user>@<address>
-
 Update the repository:
 
     cd gciruelos.com
@@ -20,12 +16,6 @@ Compile everyting:
     cabal configure
     cabal build
     make build
-
-Copy results to website directory and clean:
-
-    cp -ri ~/gciruelos.com/_site/* /var/www/gciruelos.com/html
-    make clean
-
 
 If cabal fails:
 
