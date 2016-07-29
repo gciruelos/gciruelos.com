@@ -1,10 +1,14 @@
 var names = {
-  'en' : 'Right Wrong',
-  'es' : 'Bien Mal',
+  'de' : 'Richtig Falsh',
+  'en' : 'Right Wrong',  // Approved.
+  'es' : 'Bien Mal',  // Approved.
   'fr' : 'Bien Mal',
+  'hy' : 'Ճիշտ Սխալ',  // Approved.
   'it' : 'Giusto Sbagliato',
+  'pl' : 'Dobrze Źle',
   'pt' : 'Certo Errado',
   'ru' : 'Правильно Не Правильно',
+  'sv' : 'Rätt Fel',  // Approved.
 };
 
 var userLangs = navigator.languages.concat(['en']);
