@@ -1,14 +1,16 @@
 var names = {
   'de' : 'Richtig Falsh',
+  'el' : 'Σωστό Λάθος',  // Approved (palasso#archlinux-offtopic@freenode).
   'en' : 'Right Wrong',  // Approved.
   'es' : 'Bien Mal',  // Approved.
+  'fi' : 'Oikein Väärin',  // Approved (kennae#archlinux-offtopic@freenode).
   'fr' : 'Bien Mal',
-  'hy' : 'Ճիշտ Սխալ',  // Approved.
+  'hy' : 'Ճիշտ Սխալ',  // Approved (omp#archlinux-offtopic@freenode).
   'it' : 'Giusto Sbagliato',
   'pl' : 'Dobrze Źle',
   'pt' : 'Certo Errado',
   'ru' : 'Правильно Не Правильно',
-  'sv' : 'Rätt Fel',  // Approved.
+  'sv' : 'Rätt Fel',  // Approved (Chewtoy#archlinux-offtopic@freenode).
 };
 
 var userLangs = navigator.languages.concat(['en']);
@@ -22,3 +24,4 @@ for (var i = 0; i < userLangs.length; i++) {
   }
 }
 document.getElementById('blogname').innerHTML = blogName;
+
