@@ -329,7 +329,7 @@ If you want to see the details of the implementation, feel free to take a look a
 Epilogue
 --------
 
-The idea of this post came from a [great post](http://pappubahry.com/misc/rectangles/) that analyzes the *rectangularness* of countries. We both use gradient descent, to find an approximated solution to our problems, although the code is completely different.
+The idea of this post came from a [great post](http://pappubahry.com/misc/rectangles/) that analyzes the *rectangularness* of countries. We both use gradient descent, to find an approximated solution to our problems, although the code is completely different. We used the same dataset though, so I should make the same clarification: all geopolitical decisions were outsourced to Natual Earth.
 
 **Edit (28 Jul 2016):** Updated list and included a fix for projections. Now I use an azimuthal projection centered in each country, which allows a more precise representation. All the details can be seen in the gist, which has been updated accordingly. Also added an index for polygons to make intersection computation faster.
 
