@@ -5,7 +5,7 @@ url: what-is-the-roundest-country.html
 
 We can define *roundness* in many ways. For example, as you may know, the circle is the shape that given a fixed perimeter maximizes the area. This definition has many problems. One of the problems is that countries generally have chaotic perimeters (also known as borders), so they tend to be much longer than they seem to be.
 
-For that reason, we have to define roundness some other way. We represent countries as a plane region, i.e., a compact set \\(C \\subset \\mathbb{R}^2\\). I will define its roundness as
+For that reason, we have to define roundness some other way. Given a country, I will represent it as a plane region, i.e., a compact set \\(C \\subset \\mathbb{R}^2\\) and I will define its roundness as
 
 \\[
   roundness(C) =
@@ -30,17 +30,6 @@ Note that:
 * If \\(roundness(C) = 1\\), then \\(C\\) is a circle, because it overlaps completely with \\(D(x,r)\\), for some \\(x\\) and \\(r\\).
 
 Let's see the results and then we will see the code I used to get them. You can scroll to see all the results, and sort by any column you like.
-
-
-<style>
-.countrytable table { display: table; width: 100%; }
-.countrytable table thead, table tbody { float: left; width: 100%; }
-.countrytable table tbody { overflow: auto; max-height: 590px; }
-.countrytable table tr { width: 100%; display: table; text-align: left; }
-.countrytable table th { width: 25%; }
-.countrytable table td { width: 25%; }
-.countrytable table thead { padding-right:18px;width: calc(100% - 18px); }
-</style>
 
 <script type="text/javascript">
 </script>
@@ -259,13 +248,11 @@ Rank   | Country     | Roundness | Image
 
 
 <script type="text/javascript">
-var countries_table = document.getElementById('countrytable').getElementsByTagName('table')[0];
-if (countries_table.className != '') {
-  countries_table.className += ' ';
-}
-countries_table.className += 'sortable';
-
 var table = document.getElementById('countrytable').getElementsByTagName('table')[0];
+if (table.className != '') {
+  table.className += ' ';
+}
+table.className += 'sortable';
 var png_const = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAMAAAAKE/YAAAADAFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA';
 
 for (var i = 1, row; row = table.rows[i]; i++) {
@@ -276,10 +263,17 @@ for (var i = 1, row; row = table.rows[i]; i++) {
    img.src = png_const + img_text;
    col.appendChild(img);
 }
-table.style = 'width:100%';
 </script>
 <script type="text/javascript" src="js/sorttable.js"></script>
-<style></style>
+<style>
+.countrytable table { display: table; width: 100% !important; }
+.countrytable table thead, table tbody { float: left; width: 100%; }
+.countrytable table tbody { overflow: auto; max-height: 590px; }
+.countrytable table tr { width: 100%; display: table; text-align: left; }
+.countrytable table th { width: 25%; }
+.countrytable table td { width: 25%; }
+.countrytable table thead { padding-right:18px;width: calc(100% - 18px); }
+</style>
 
 Dataset
 -------
