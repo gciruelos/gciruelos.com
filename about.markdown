@@ -7,6 +7,5 @@ title: About
 
 
 * [Source code of this blog.](https://github.com/gciruelos/gciruelos.com)
-* The name of the blog comes from a song by Swans.
 
 
