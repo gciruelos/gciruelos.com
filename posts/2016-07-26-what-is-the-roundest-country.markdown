@@ -279,6 +279,7 @@ for (var i = 1, row; row = table.rows[i]; i++) {
 table.style = 'width:100%';
 </script>
 <script type="text/javascript" src="js/sorttable.js"></script>
+<style></style>
 
 Dataset
 -------
