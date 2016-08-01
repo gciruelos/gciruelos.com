@@ -31,8 +31,7 @@ Note that:
 
 Let's see the results and then we will see the code I used to get them. You can scroll to see all the results, and sort by any column you like.
 
-<script type="text/javascript">
-</script>
+<link rel="stylesheet" type="text/css" href="/css/roundest-country.css" />
 
 <div class="countrytable" id="countrytable">
 Rank   | Country     | Roundness | Image
@@ -263,17 +262,12 @@ for (var i = 1, row; row = table.rows[i]; i++) {
    img.src = png_const + img_text;
    col.appendChild(img);
 }
+table.style = 'width:100%;'
+table.style.display = 'none';
+table.style.display = 'block';
 </script>
 <script type="text/javascript" src="js/sorttable.js"></script>
-<style>
-.countrytable table { display: table; width: 100% !important; }
-.countrytable table thead, table tbody { float: left; width: 100%; }
-.countrytable table tbody { overflow: auto; max-height: 590px; }
-.countrytable table tr { width: 100%; display: table; text-align: left; }
-.countrytable table th { width: 25%; }
-.countrytable table td { width: 25%; }
-.countrytable table thead { padding-right:18px;width: calc(100% - 18px); }
-</style>
+<style></style>
 
 Dataset
 -------

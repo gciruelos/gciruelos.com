@@ -1,0 +1,7 @@
+.countrytable table { display: table; width: 100%; }
+.countrytable table thead, table tbody { float: left; width: 100%; }
+.countrytable table tbody { overflow: auto; max-height: 590px; }
+.countrytable table tr { width: 100%; display: table; text-align: left; }
+.countrytable table th { width: 25%; }
+.countrytable table td { width: 25%; }
+.countrytable table thead { padding-right:18px;width: calc(100% - 18px); }
