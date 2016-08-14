@@ -59,19 +59,21 @@ Think about the problem before continuing reading. It seems actually impossible,
 
 **Solution**
 
-Number all the squares, from 0 to 63. Let \\(D\\) be the square that the Devil chose. Let \\({H_i}\\) be all the squares such that its coin is heads and \\(H = \\oplus H_1 \\oplus ... \\oplus H_n\\).
+Number all the squares, from 0 to 63. Let \\(D\\) be the square that the Devil chose. Let \\({H_i}\\) be all the squares such that its coin is heads and \\(H = H_1 \\oplus ... \\oplus H_n\\).
 
 Then we can solve for \\(X\\).
 
 \\[H \\oplus X = D\\]
 
-Why this? Because then suppose \\(X\\) is tails. Then we flip that coin, and then all our friend has to do is to xor all the squares with heads, and the result is \\(D\\), and we are done.
+Why this? 
 
-Now suppose \\(X\\) is heads, then we flip it and it works as before. Because \\(H = H_1 \\oplus ... \\oplus X \\oplus ... \\oplus H_n\\), then \\(H \\otimes X = D \\), again, because the \\(X\\) cancels out.
+Suppose \\(X\\) is tails. Then we flip that coin, and then all our friend has to do is to xor all the squares with heads, and the result is \\(D\\), and we are done.
+
+Now suppose \\(X\\) is heads, then we flip it and it works as before. Because \\(H = H_1 \\oplus ... \\oplus X \\oplus ... \\oplus H_n\\), then \\(H \\oplus X = D \\), again, because the \\(X\\) cancels out.
 
 The end.
 
-But we can generalize this. If the number of squares is a power of 2, then the equation \\(G \\oplus X = D\\) will always have a solution in \\({0,...,2^n-1}\\) (if you don't get this, think about the bits) , so we can solve the problem. 
+But we can generalize this. If the number of squares is a power of \\(2\\), then the equation \\(G \\oplus X = D\\) will always have a solution in \\({0,...,2^n-1}\\) (if you don't get this, think about the bits) , so we can solve the problem. 
 
 But what if the number of squares is not a power of two? I don't know, it is a nice problem to think about. For a start, if the number of squares is 3, then there is no solution, i.e., the devil always wins, it can be checked case by case.
 
@@ -128,7 +130,7 @@ The bad thing about this cipher is that if an attacker gets \\(M\\), the message
 Next there is a simple program that implements the cipher
 
 ```C
-void xor_cypher(char * msg, const char * key, int n){
+void xor_cypher(char* msg, const char* key, int n) {
   int i;
   for (i = 0; i < n; i++) {
     msg[i] ^= key[i];
