@@ -26,6 +26,14 @@ padding:0 10px
 
 }
 
+a {
+  color: #4285f4;
+  text-decoration: none;
+}
+a:active,a:hover { text-decoration: underline; }
+a:active { color: #2265d4; }
+
+
 h1,h2,h3{line-height:1.2}
 
 div#header {
