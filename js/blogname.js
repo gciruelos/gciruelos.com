@@ -11,13 +11,19 @@ var names = {
   'pt' : 'Certo Errado',
   'ru' : 'Правильно Не Правильно',
   'sv' : 'Rätt Fel',  // Approved (Chewtoy#archlinux-offtopic@freenode).
+  // 'zh' : '近 不',
 };
 
-var userLangs = navigator.languages.concat(['en']);
+var userLangs = navigator.languages
+                         .concat(['en'])
+                         .map(function(lang) { return lang.toLowerCase() });
 console.log(userLangs);
 var blogName = '';
 for (var i = 0; i < userLangs.length; i++) {
-  var possibleName = names[userLangs[i].substring(0,2)];
+  var possibleName = names[userLangs[i]];
+  if (possibleName == undefined) {
+    possibleName = names[userLangs[i].substring(0,2)];
+  }
   if (possibleName != undefined) {
     blogName = possibleName;
     break;
