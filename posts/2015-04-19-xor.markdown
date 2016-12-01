@@ -108,7 +108,7 @@ Where \\(mex\\) is the minimum excluded natural of the set and \\(F(x)\\) the al
 
 One can show (I won't do it here, you can check it in [1]) that if a position \\(x\\) in a game is a P position, i.e. the next player loses, then \\(g(x) = 0\\) and viceversa.
 
-Now, the important thing about this function is the concept of *sum of games*. Some games are very hard to analyze on their own, for example [Nim](http://en.wikipedia.org/wiki/Nim). 
+Now, the important thing about this function is the concept of *sum of games*. Some games are very hard to analyze on their own, for example [Nim](https://en.wikipedia.org/wiki/Nim). 
 So one can think about Nim as several Nims with only 1 heap being played simultaneously. 
 
 This concept is called sum of games, and if \\(G_1\\) and \\(G_2\\) are games the game of playing them simultaneously is \\((G_1, G_2)\\).
@@ -148,7 +148,7 @@ Other interesting-but-not-so-useful properties
 
 
 
-* [**Rule 90**](http://en.wikipedia.org/wiki/Rule_90). If we consider the elementary cellular automaton based on \\(\\oplus\\), given a random initial configuration, the configuration stays random every step.
+* [**Rule 90**](https://en.wikipedia.org/wiki/Rule_90). If we consider the elementary cellular automaton based on \\(\\oplus\\), given a random initial configuration, the configuration stays random every step.
 
 
 References
