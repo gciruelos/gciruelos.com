@@ -33,19 +33,19 @@ main = hakyll $ do
     match (fromList ["robots.txt", "favicon.ico"]) $ do
         route   idRoute
         compile copyFileCompiler
-    
+
     match (fromList ["about.markdown"]) $ do
         route   $ setExtension "html"
         compile $ pandocCompiler
             >>= loadAndApplyTemplate "templates/default.html" defaultContext
             >>= relativizeUrls
 
-    match "posts/*" $ do 
+    match "posts/*" $ do
         route $ customRoute $ urlPosts . toFilePath
         compile $ pandocMathCompiler
             >>= saveSnapshot "content"
             >>= loadAndApplyTemplate "templates/post.html"    postCtx
-            >>= loadAndApplyTemplate "templates/default.html" postCtx 
+            >>= loadAndApplyTemplate "templates/default.html" postCtx
             >>= relativizeUrls
 
     match "index.html" $ do
@@ -57,7 +57,7 @@ main = hakyll $ do
                     defaultContext
             getResourceBody
                 >>= applyAsTemplate indexCtx
-                >>= loadAndApplyTemplate "templates/default.html" indexCtx 
+                >>= loadAndApplyTemplate "templates/default.html" indexCtx
                 >>= relativizeUrls
 
     match "templates/*" $ compile templateCompiler
@@ -65,7 +65,7 @@ main = hakyll $ do
 teaserCtx = teaserField "teaser" "content" `mappend` postCtx
 
 
-pandocMathCompiler = 
+pandocMathCompiler =
     let mathExtensions = [Ext_tex_math_double_backslash,
                           Ext_backtick_code_blocks]
         defaultExtensions = writerExtensions defaultHakyllWriterOptions
