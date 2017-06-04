@@ -1,35 +1,31 @@
 @import url('https://fonts.googleapis.com/css?family=PT+Sans|IM+Fell+Double+Pica');
-html{
+html {
   width: 100%;
   height: 100%;
   margin: 0px;
   padding: 0px;
-  overflow-x: hidden; 
+  overflow-x: hidden;
 }
 body {
-margin:40px auto;
-max-width:650px;
-line-height:1.6;
-font-size:18px;
-color:#444;
-padding:0 10px
+  margin: 40px auto;
+  max-width: 650px;
+  line-height: 1.6;
+  font-size: 18px;
+  color: #444;
+  padding: 0 10px
 }
-@media (min-device-width: 1px) and (max-device-width: 700px) { 
-body {
-margin:40px auto;
-max-width:90%;
-line-height:1.2;
-font-size:24px;
-color:#444;
-padding:0 10px
+@media (min-device-width: 1px) and (max-device-width: 700px) {
+  body {
+    margin: 40px auto;
+    max-width: 90%;
+    line-height: 1.2;
+    font-size: 24px;
+    color: #444;
+    padding: 0 10px
+  }
 }
 
-}
-
-a {
-  color: #4285f4;
-  text-decoration: none;
-}
+a { color: #4285f4; text-decoration: none; }
 a:active,a:hover { text-decoration: underline; }
 a:active { color: #2265d4; }
 
@@ -37,29 +33,29 @@ a:active { color: #2265d4; }
 h1,h2,h3{line-height:1.2}
 
 div#header {
-    border-bottom: 2px solid black;
-    margin-bottom: 40px;
-    padding: 12px 5px 12px 5px;
-    font-family: 'IM Fell Double Pica';
+  border-bottom: 2px solid black;
+  margin-bottom: 40px;
+  padding: 12px 5px 12px 5px;
+  font-family: 'IM Fell Double Pica';
 }
 
 div#header #logo a {
-    color: black;
-    float: left;
-    font-family: 'IM Fell Double Pica';
-    font-size: 2em;
-    font-weight: bold;
-    text-decoration: none;
+  color: black;
+  float: left;
+  font-family: 'IM Fell Double Pica';
+  font-size: 2em;
+  font-weight: bold;
+  text-decoration: none;
 }
 
 div#footer {
-    border-top: solid 2px black;
-    color: #555;
-    font-size: 0.7em;
-    margin-top: 30px;
-    padding: 12px 0px 12px 0px;
-    text-align: right;
-    font-family: 'PT Sans', serif;
+  border-top: solid 2px black;
+  color: #555;
+  font-size: 0.7em;
+  margin-top: 30px;
+  padding: 12px 0px 12px 0px;
+  text-align: right;
+  font-family: 'PT Sans', serif;
 }
 
 blockquote {
@@ -84,28 +80,28 @@ blockquote p {
 
 
 h1 {
-    font-family: 'IM Fell Double Pica', serif;
-    font-size: 1.75em;
+  font-family: 'IM Fell Double Pica', serif;
+  font-size: 1.75em;
 }
 
 h2 {
-    font-family: 'IM Fell Double Pica', serif;
-    font-size: 1.5em; 
+  font-family: 'IM Fell Double Pica', serif;
+  font-size: 1.5em;
 }
 
-div#content { 
-    font-color: #111111;
-    font-family: 'PT Sans'; 
-    font-size: 100%;
-    line-height: 1.25em; 
+div#content {
+  font-color: #111111;
+  font-family: 'PT Sans';
+  font-size: 100%;
+  line-height: 1.25em;
 
 }
 
-div.info { 
-    color: #999;
-    font-family: 'IM Fell Double Pica';
-    font-size: 0.8em;
-    font-style: italic;
+div.info {
+  color: #999;
+  font-family: 'IM Fell Double Pica';
+  font-size: 0.8em;
+  font-style: italic;
 }
 
 a.post_link{
@@ -115,11 +111,11 @@ a.post_link{
 }
 
 div.un_post:hover{
-    background-color: #eeeeee;
+  background-color: #eeeeee;
 }
 
 tr.odd {
-      background-color:#eeeeee;
+  background-color:#eeeeee;
 }
 
 .gist{font-size:13px;line-height:18px;margin-bottom:20px;width:100%}
@@ -128,12 +124,9 @@ tr.odd {
 .gist-meta a{color:#26a !important;text-decoration:none}
 .gist-meta a:hover{color:#0e4071 !important}
 .gist .blob-wrapper.data {
-   max-height:500px;
-   overflow:auto;
+  max-height:500px;
+  overflow:auto;
 }
-
-
-
 
 code {
   background-color: #eee;
