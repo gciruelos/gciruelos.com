@@ -1,12 +1,16 @@
 SITE=./dist/build/site/site
 
-watch:
+$(SITE):
+	cabal configure
+	cabal build
+
+watch: build
 	$(SITE) watch
 
-build:
+build: $(SITE)
 	$(SITE) build
 
-clean:
+clean: $(SITE)
 	$(SITE) clean
 
 clean-all: clean
