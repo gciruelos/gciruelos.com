@@ -1,4 +1,6 @@
 #!/bin/bash
+export WWWDIR="/var/www/gciruelos.com/html"
+export HOME="/home/strangemeadowlark"
 FOLDER=$HOME"/gciruelos.com"
 SITE="_site"
 HTML="$WWWDIR"
@@ -11,8 +13,9 @@ if [ ! -d "$FOLDER" ]; then
   cabal install --only-dependencies
 fi
 cd $FOLDER
+git pull
 make clean
 cabal configure
 cabal build
 make build
-cp -Rf "$FOLDER/$SITE" $HTML
+cp -af "$FOLDER/$SITE/." "$HTML/"
