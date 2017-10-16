@@ -1,6 +1,6 @@
 #!/bin/bash
-export WWWDIR="/var/www/gciruelos.com/html"
-export HOME="/home/strangemeadowlark"
+WWWDIR="/var/www/gciruelos.com/html"
+HOME="/home/"$USER
 FOLDER=$HOME"/gciruelos.com"
 SITE="_site"
 HTML="$WWWDIR"
