@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name=”referrer” content=”always”>
+
+<title>Diputados</title>
+
+<link rel="stylesheet" type="text/css" href="css/index.css" media="screen" />
+</head>
+
+
+<body>
+
+<h1>La cantidad de escaños en la cámara de diputados por provincia</h1>
+
+<em>23/10/2017</em>
+
+<p>
+Ayer se eligieron diputados en Argentina.
+La ley que le asigna la cantidad de escaños a cada provincia fue promulgada
+el 12 de Julio de 1983 por, en aquel entonces Presidente de la Nación,
+Reynaldo Bignone.
+</p>
+
+<p>
+La ley, llamada ley de convocatoria electoral,
+<a href="http://servicios.infoleg.gob.ar/infolegInternet/anexos/195000-199999/195989/norma.htm">
+es la número 22.847</a>, y el artículo que hoy nos importa es el tercero.
+</p>
+
+<p>
+El artículo dice:
+</p>
+
+<blockquote>
+ARTICULO 3º - El número de diputados nacionales a elegir será de uno por cada
+161.000 habitantes o fracción no menor de 80.500. A dicha representación se
+agregará, por cada distrito, la cantidad de tres (3) diputados, no pudiendo en
+ningún caso ser menor de cinco (5) diputados ni inferior a la que cada distrito
+tenía al 23 de marzo de 1976. El Territorio Nacional de la Tierra del Fuego,
+Antártida e Islas del Atlántico Sud, elegirá dos (2) diputados.
+</blockquote>
+
+<p>
+El artículo cuarto aclara (el subrayado es mío):
+</p>
+
+<blockquote>
+ARTICULO 4º - Las autoridades a cargo del Poder Ejecutivo de la Nación, de las
+provincias y del Territorio Nacional de la Tierra del Fuego, Antártida e Islas
+del Atlántico Sud, dictarán dentro de los diez (10) días corridos de la
+publicación de la presente ley, las respectivas convocatorias para la elección
+de autoridades locales en las que se incluirá, en lo pertinente y <u>de
+acuerdo a lo prescripto en el artículo 3º</u>, la siguiente representación
+en el orden nacional, <u>tomando como base a tal efecto el censo practicado
+en 1980.</u>
+</blockquote>
+
+<p>
+Como se puede ver, la ley muestra su edad. Primero, habla del Territorio
+Nacional de la Tierra del Fuego, Antártida e Islas del Atlántico Sud.
+El 26 de abril de 1990 fue sancionada la
+<a href="http://servicios.infoleg.gob.ar/infolegInternet/anexos/0-4999/176/texact.htm">
+Ley Nº 23.775</a> que los declaró provincia, y por lo tanto pasó a obtener los
+5 escaños que el Artículo 3º de la Ley Nº 22.847 le adjudica.
+</p>
+
+<p>
+Segundo, aclara que la cantidad de diputados que tiene una provincia no pueden
+ser inferiores a la que cada distrito tenía el 23 de marzo de 1976. Esto parece
+arbitrario y no pude encontrarle razón. Pero el hecho es que los únicos
+distritos a los que beneficia es a Santa Fe (que tendría 18 diputados en vez de
+19) y a Capital Federal (que tendría 21 diputados en vez de 25).
+</p>
+
+<p>
+Tercero, y más importante, se utiliza el censo de 1980 como fuente para obtener la
+cantidad de habitantes de la que habla el artículo tercero. Esto no tiene nada
+de malo, pero nunca fue actualizado, y hoy en día en 2017, después de 37 años
+de recambio de población, seguimos usando los mismos datos del censo de 1980.
+</p>
+
+<p>
+Con la ley actual, la cantidad de escaños por provincia es la que se encuentra
+en la siguiente tabla. La tercera columna es la cantidad de habitantes (según
+el censo de 2010) representados por un diputado para cada provincia.
+</p>
+
+<p>
+<table align="center" id="tabla-ley-original">
+  <tr>
+    <th>Provincia</th>
+    <th>Diputados</th>
+    <th>Habitantes<br />por diputado</th>
+  </tr>
+</table>
+</p>
+<br />
+
+<p>
+Nótese la disparidad de representación: Tierra del Fuego recibe 1 diputado por cada 25.441 habitantes,
+mientras que la Provincia de Buenos Aires recibe 1 diputado por cada 223.215 habitantes.
+La representación (usando como métrica de la "injusticia" el número de la tercera columna) ya era injusta en 1983, pero
+con los cambios de población de las provincias, se volvió más injusto.
+</p>
+
+<p>
+Por todo lo dicho anteriormente, es claro que sería positivo para la
+equidistribución del poder de las provincias en el gobierno central que la ley
+sea actualizada. Con el fin de analizar posibles modificaciones, propongo la
+siguiente herramienta.
+</p>
+
+<style>
+.herramienta {
+    border: 1px solid #000000;
+    padding: 5px 10px 0px 10px;
+}
+</style>
+<div class="herramienta">
+<style>
+input[type=range] {
+    -webkit-appearance: none;
+    background: transparent;
+}
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+}
+input[type=range]:focus {
+    outline: none; 
+}
+input[type=range]::-ms-track {
+    width: 100%;
+    cursor: pointer;
+    background: transparent; 
+    border-color: transparent;
+    color: transparent;
+}
+</style>
+<table>
+  <tr>
+    <td>Habitantes por diputado</label></td>
+    <td>
+      <input type="range" oninput="onInputFunction(this);" min="1" max="1000" value="161" class="slider" id="habitantes-slider">
+    </td>
+    <td><span id="habitantes-txt"></span></td>
+  </tr>
+
+  <tr>
+    <td>Diputados extra</td>
+    <td>
+      <input type="range" oninput="onInputFunction(this);" min="0" max="20" value="3" class="slider" id="extra-slider">
+    </td>
+    <td><span id="extra-txt"></span></td>
+  </tr>
+    <td>Mínimo número de diputados</td>
+    <td>
+      <input type="range" oninput="onInputFunction(this);" min="0" max="20" value="5" class="slider" id="minimo-slider">
+    </td>
+    <td><span id="minimo-txt"></span></td>
+</table>
+<div>
+  <input type="checkbox" oninput="onInputFunction(this);" name="minimo1976" id="minimo1976-checkbox">
+  <span id="minimo1976-txt">No se puede tener menos diputados que en 1976.</span>
+</div>
+
+<blockquote>
+ARTICULO 3º - El número de diputados nacionales a elegir será de uno por cada
+<span id="habitantes">161.000</span> habitantes o fracción no menor de
+<span id="habitantes-mitad">80.500</span>. A dicha representación se agregará,
+por cada distrito, la cantidad de <span id="extra">tres (3)</span>
+diputado<span id="extra-s"></span>, no pudiendo en ningún caso ser menor de
+<span id="minimo">cinco (5)</span> diputado<span id="minimo-s"></span>
+<span id="minimo1976"></span>. <del>El Territorio Nacional de la Tierra del
+Fuego, Antártida e Islas del Atlántico Sud, elegirá dos (2) diputados. </del>
+</blockquote>
+
+
+<p>
+Si la ley fuera como arriba, utilizando el censo de 2010 para obtener la población de cada provincia, obtendríamos la
+siguiente distribución de bancas por provincia.
+</p>
+
+<p>
+<table align="center" id="tabla-ley-cambiada">
+  <tr>
+    <th>Provincia</th>
+    <th>Diputados</th>
+    <th>Habitantes<br />por diputado</th>
+  </tr>
+</table>
+</p>
+</div>
+
+<p>
+Para terminar con una opinión, creo que la cantidad de diputados extra por
+provincia debería ser 0, pero la cantidad mínima de diputados debería ser 2
+(1 para darle representación y 2 para que haya oficialismo y oposición, en caso
+que el sistema de distribución de escaños (en nuestro caso el
+<a href="http://servicios.infoleg.gob.ar/infolegInternet/anexos/15000-19999/19442/texact.htm">
+D'Hont</a>) así lo determine).
+</p>
+
+<script>
+var habitantes = 0;
+var extra = 0;
+var minimo = 0;
+var minimo1976 = false;
+
+function onInputFunction(input) {
+    switch (input.id) {
+        case "habitantes-slider":
+            habitantes = 1000 * Number(input.value);
+            updateHabitantes(habitantes);
+            break;
+        case "extra-slider":
+            extra = Number(input.value);
+            updateParentesis("extra", extra);
+            break;
+        case "minimo-slider":
+            minimo = Number(input.value);
+            updateParentesis("minimo", minimo);
+            break;
+        case "minimo1976-checkbox":
+            minimo1976 = input.checked;
+            update1976(minimo1976);
+            break;
+    }
+    dibujarTabla(habitantes, extra, minimo, censo2010, censo2010, "tabla-ley-cambiada", minimo1976);
+}
+
+function dibujarTabla(habitantes, extra, minimo, censoPosta, censo, tableName, piso1976) {
+    var table = document.getElementById(tableName);
+    if (table.rows.length > 1) {
+        for (var i = 1; i < Object.keys(provincias).length + 1 + 1; i++) {
+            table.deleteRow(1);
+        }
+    }
+    var total = 0;
+    for (var i = 1; i < Object.keys(provincias).length + 1; i++) {
+        var pcia = Object.keys(provincias)[i-1];
+        var row = table.insertRow(i);
+        var nombreProvincia = row.insertCell(0);
+        nombreProvincia.innerHTML = provincias[pcia];
+        var diputados = row.insertCell(1);
+        var minimoDiputados = piso1976 ? Math.max(diputados1973[pcia], minimo) : minimo;
+        var cantidadDiputados = calcularDiputados(censo[pcia], habitantes, extra, minimoDiputados);
+        total += cantidadDiputados;
+        diputados.innerHTML = String(cantidadDiputados);
+        diputados.setAttribute("align", "center");
+        var habitantesPorDiputado = row.insertCell(2);
+        habitantesPorDiputado.innerHTML = numeroConPuntos(
+            Math.round(censoPosta[pcia] / cantidadDiputados));
+        habitantesPorDiputado.setAttribute("align", "center");
+    }
+    var totalRow = table.insertRow(Object.keys(provincias).length + 1);
+    totalRow.insertCell(0).innerHTML = "Total";
+    var tCell = totalRow.insertCell(1);
+    tCell.innerHTML = String(total);
+    tCell.setAttribute("align", "center");
+    totalRow.insertCell(2);
+}
+
+function calcularDiputados(habitantes, habitantesPorDiputado, extra, minimo, piso1976) {
+    return Math.max(minimo, Math.round(habitantes / habitantesPorDiputado + extra));
+}
+
+function numeroConPuntos(n) {
+    return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+}
+
+function updateHabitantes(n) {
+    document.getElementById("habitantes").innerHTML = numeroConPuntos(n);
+    document.getElementById("habitantes-mitad").innerHTML = numeroConPuntos(n / 2);
+    document.getElementById("habitantes-txt").innerHTML = numeroConPuntos(n);
+}
+
+function updateParentesis(id, n) {
+    document.getElementById(id).innerHTML = numeros[n] + " (" + String(n) + ")";
+    document.getElementById(id+"-txt").innerHTML = String(n);
+    document.getElementById(id+"-s").innerHTML = n == 1 ? "" : "s";
+}
+
+var texto1976 = " ni inferior a la que cada distrito tenía al 23 de marzo de 1976";
+function update1976(valor) {
+    document.getElementById("minimo1976-checkbox").checked = valor;
+    document.getElementById("minimo1976").innerHTML =
+        valor ? texto1976 : "<del>" + texto1976 + "</del>";
+}
+
+var numeros = {
+    0 : "cero",
+    1 : "un",
+    2 : "dos",
+    3 : "tres",
+    4 : "cuatro",
+    5 : "cinco",
+    6 : "seis",
+    7 : "siete",
+    8 : "ocho",
+    9 : "nueve",
+    10 : "diez",
+    11 : "once",
+    12 : "doce",
+    13 : "trece",
+    14 : "catorce",
+    15 : "quince",
+    16 : "dieciséis",
+    17 : "diecisiete",
+    18 : "dieciocho",
+    19 : "diecinueve",
+    20 : "veinte",
+};
+
+var provincias = {
+    "bue": "Buenos Aires",
+    "cat": "Catamarca",
+    "cha": "Chaco",
+    "chu": "Chubut",
+    "cap": "Capital Federal",  // "Ciudad A. de Buenos Aires",
+    "ces": "Corrientes",
+    "cba": "Cordoba",
+    "eri": "Entre Ríos",
+    "for": "Formosa",
+    "juj": "Jujuy",
+    "pmp": "La Pampa",
+    "rja": "La Rioja",
+    "mza": "Mendoza",
+    "mis": "Misiones",
+    "nqn": "Neuquén",
+    "rne": "Río Negro",
+    "sal": "Salta",
+    "sju": "San Juan",
+    "slu": "San Luis",
+    "scr": "Santa Cruz",
+    "sfe": "Santa Fe",
+    "ses": "Santiago del Estero",
+    "tfu": "Tierra del Fuego",
+    "tuc": "Tucumán",
+};
+
+
+var censo2010 = {
+    "bue": 15625083,
+    "cat": 367828,
+    "cha": 1055259,
+    "chu": 509108,
+    "cap": 2890151,
+    "ces": 992595,
+    "cba": 3308876,
+    "eri": 1235994,
+    "for": 530162,
+    "juj": 673307,
+    "pmp": 318951,
+    "rja": 333642,
+    "mza": 1738929,
+    "mis": 1101593,
+    "nqn": 551266,
+    "rne": 638645,
+    "sal": 1214441,
+    "sju": 681055,
+    "slu": 432310,
+    "scr": 273964,
+    "sfe": 3194537,
+    "ses": 874006,
+    "tfu": 127205,
+    "tuc": 1448188,
+};
+
+var censo1980 = {
+    "bue": 10865408,
+    "cat": 207717,
+    "cha": 701392,
+    "chu": 263116,
+    "cap": 2922829,
+    "ces": 661454,
+    "cba": 2407754,
+    "eri": 908313,
+    "for": 295887,
+    "juj": 410008,
+    "pmp": 208260,
+    "rja": 164217,
+    "mza": 1196228,
+    "mis": 588977,
+    "nqn": 243850,
+    "rne": 383354,
+    "sal": 662870,
+    "sju": 465976,
+    "slu": 214416,
+    "scr": 114941,
+    "sfe": 2465546,
+    "ses": 594920,
+    "tfu": 29392,
+    "tuc": 972655,
+};
+
+// https://es.wikipedia.org/wiki/Elecciones_legislativas_de_Argentina_de_1973
+var diputados1973 = {
+    "bue": 68,
+    "cat": 4,
+    "cha": 7,
+    "chu": 4,
+    "cap": 25,
+    "ces": 7,
+    "cba": 18,
+    "eri": 9,
+    "for": 5,
+    "juj": 5,
+    "pmp": 4,
+    "rja": 4,
+    "mza": 10,
+    "mis": 6,
+    "nqn": 4,
+    "rne": 5,
+    "sal": 7,
+    "sju": 6,
+    "slu": 4,
+    "scr": 4,
+    "sfe": 19,
+    "ses": 7,
+    "tfu": 2,
+    "tuc": 9,
+};
+
+
+onInputFunction({
+    "id" : "habitantes-slider",
+    "value" : 161
+});
+document.getElementById("habitantes-slider").value = 161;
+
+
+onInputFunction({
+    "id" : "extra-slider",
+    "value" : 3
+});
+document.getElementById("extra-slider").value = 3;
+
+onInputFunction({
+    "id" : "minimo-slider",
+    "value" : 5
+});
+onInputFunction({
+    "id" : "minimo1976-checkbox",
+    "checked" : true
+});
+
+document.getElementById("minimo-slider").value = 5;
+dibujarTabla(habitantes, extra, minimo, censo2010, censo2010, "tabla-ley-cambiada", minimo1976);
+dibujarTabla(161000, 3, 5, censo2010, censo1980, "tabla-ley-original", true);
+
+</script> 

@@ -34,6 +34,10 @@ main = hakyll $ do
         route   idRoute
         compile copyFileCompiler
 
+    match "argentina/**" $ do
+        route   idRoute
+        compile copyFileCompiler
+
     match (fromList ["robots.txt", "favicon.ico"]) $ do
         route   idRoute
         compile copyFileCompiler
