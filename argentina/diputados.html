@@ -119,25 +119,6 @@ siguiente herramienta.
 }
 </style>
 <div class="herramienta">
-<style>
-input[type=range] {
-    -webkit-appearance: none;
-    background: transparent;
-}
-input[type=range]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-}
-input[type=range]:focus {
-    outline: none; 
-}
-input[type=range]::-ms-track {
-    width: 100%;
-    cursor: pointer;
-    background: transparent; 
-    border-color: transparent;
-    color: transparent;
-}
-</style>
 <table>
   <tr>
     <td>Habitantes por diputado</label></td>
@@ -161,7 +142,7 @@ input[type=range]::-ms-track {
     <td><span id="minimo-txt"></span></td>
 </table>
 <div>
-  <input type="checkbox" oninput="onInputFunction(this);" name="minimo1976" id="minimo1976-checkbox">
+  <input type="checkbox" onchange="onInputFunction(this);" name="minimo1976" id="minimo1976-checkbox">
   <span id="minimo1976-txt">No se puede tener menos diputados que en 1976.</span>
 </div>
 
