@@ -93,7 +93,7 @@ and you must have wondered why it was like that instead a more sane
 mov rax, 0
 ```
 
-With a little gdb and googling, one can find out that ```xor rax, rax``` compiles to ```48 31 c0``` in machine code, while ```xor rax, 0``` compiles to ```b8 00 00 00 00```.
+With a little gdb and googling, one can find out that ```xor rax, rax``` compiles to ```48 31 c0``` in machine code, while ```mov rax, 0``` compiles to ```b8 00 00 00 00```.
 
 So the first instruction not only generated less code, it is faster to execute, because the CPU has to fetch less data from memory. This is another very used advantage of xor.
 
