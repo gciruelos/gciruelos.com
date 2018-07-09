@@ -1,8 +1,7 @@
-SITE=./dist/build/site/site
+SITE=$(shell find .stack-work/dist -name "site" -type f)
 
 $(SITE):
-	cabal configure
-	cabal build
+	stack build
 
 watch: build
 	$(SITE) watch
@@ -14,4 +13,4 @@ clean: $(SITE)
 	$(SITE) clean
 
 clean-all: clean
-	rm -rf dist/
+	rm -rf dist .stack-work _site _cache
