@@ -7,9 +7,9 @@ executable site
   main-is:
     site.hs
   build-depends:
-    base >=4.8,
+    base>=4.8,
     containers,
-    hakyll >= 4.6,
+    hakyll>=4.6,
     pandoc
   ghc-options:
     -threaded

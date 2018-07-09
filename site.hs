@@ -38,6 +38,10 @@ main = hakyll $ do
         route   idRoute
         compile copyFileCompiler
 
+    match "static/**" $ do
+        route   idRoute
+        compile copyFileCompiler
+
     match (fromList ["robots.txt", "favicon.ico"]) $ do
         route   idRoute
         compile copyFileCompiler
@@ -77,7 +81,7 @@ pandocMathCompiler =
     let mathExtensions = [Ext_tex_math_double_backslash,
                           Ext_backtick_code_blocks]
         defaultExtensions = writerExtensions defaultHakyllWriterOptions
-        newExtensions = foldr S.insert defaultExtensions mathExtensions
+        newExtensions = foldr enableExtension defaultExtensions mathExtensions
         writerOptions = defaultHakyllWriterOptions {
                           writerExtensions = newExtensions,
                           writerHTMLMathMethod = MathJax ""
