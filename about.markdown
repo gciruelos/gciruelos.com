@@ -17,6 +17,8 @@ More
 
 * [cosas en castellano](/argentina/index.html)
 
-* [analytics dashboard (may be down or not up to date](/analytics.html)
+* [analytics dashboard (may be down or not up to date)](/analytics.html)
+
+* [lyrics transcribed by me (not available anywhere else, to the best of my knowledge)](https://lyrics.gciruelos.com)
 
 
