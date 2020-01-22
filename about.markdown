@@ -1,5 +1,5 @@
 ---
-title: About
+title: about
 ---
 
 * [my github](https://github.com/gciruelos/)
@@ -12,7 +12,7 @@ title: About
   [viva voce examination slides \[in Spanish\]](/static/defensa-gciruelos.pdf)
 
 
-More
+more
 ----
 
 * [cosas en castellano](/argentina/index.html)
