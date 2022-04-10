@@ -1,4 +1,8 @@
 # Ignore everything
 *
-# Except .gitignore
+# Except some stuff
 !.gitignore
+!README.md
+!root/etc/nginx/nginx.conf
+!root/etc/nginx/sites-available/*.com
+!root/etc/cgitrc
