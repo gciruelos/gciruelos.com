@@ -48,4 +48,4 @@ find /path/to/dir -type f -exec chmod 644 {} \;
 
 
 ### copy remote directory (direrctory name (dir) will be copied)
-scp -P 1995 -r strangemeadowlark@104.131.180.124:/path/to/dir .
+scp -P 1995 -r $USER@104.131.180.124:/path/to/dir .
