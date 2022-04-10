@@ -8,6 +8,7 @@ https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubunt
 
 installed packages (apt list --manual-installed=true)
 
+
 * **nginx:** https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-20-04
 * **fail2ban:** https://www.digitalocean.com/community/tutorials/how-to-protect-ssh-with-fail2ban-on-ubuntu-14-04
 * **cgit:** https://wiki.archlinux.org/title/cgit#Using_fcgiwrap
@@ -44,3 +45,7 @@ git repositories are found on ~ (/home/$USER).
 ### change chmod files and directories
 find /path/to/dir -type d -exec chmod 755 {} \;
 find /path/to/dir -type f -exec chmod 644 {} \;
+
+
+### copy remote directory (direrctory name (dir) will be copied)
+scp -P 1995 -r strangemeadowlark@104.131.180.124:/path/to/dir .
