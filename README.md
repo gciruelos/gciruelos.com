@@ -15,6 +15,7 @@ Compile everyting:
     cabal install --only-dependencies
     cabal configure
     cabal build
+    stack build
     make build
 
 If cabal fails:
@@ -22,3 +23,5 @@ If cabal fails:
     dd if=/dev/zero of=/tmp/swap bs=1M count=1024
     mkswap /tmp/swap
     sudo swapon /tmp/swap
+
+And add parameter `-j` to parallelize.

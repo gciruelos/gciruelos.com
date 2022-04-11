@@ -5,14 +5,7 @@ FOLDER=$HOME"/gciruelos.com"
 SITE="_site"
 HTML="$WWWDIR"
 if [ ! -d "$FOLDER" ]; then
-  cd $HOME
-  git clone https://github.com/gciruelos/gciruelos.com.git
-  cd gciruelos.com
-  stack build
+  cd $HOME; git clone https://github.com/gciruelos/gciruelos.com.git;
 fi
-cd $FOLDER
-git pull
-make clean
-stack build
-make build
+cd $FOLDER; git pull; make clean; stack build; make build;
 cp -af "$FOLDER/$SITE/." "$HTML/"
