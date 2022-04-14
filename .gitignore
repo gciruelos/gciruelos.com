@@ -14,6 +14,8 @@ cabal.config
 _cache/
 site
 _site/
+__site/
+__site_tmp/
 
 # stack
 .stack-work
