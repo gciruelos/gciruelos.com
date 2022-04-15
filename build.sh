@@ -104,9 +104,8 @@ run_build() {
     echo "  url: $post_url" >> $OUTTMP/$post_url.1.yaml
     echo "  date: $post_date" >> $OUTTMP/$post_url.1.yaml
     echo "  teaser: |" >> $OUTTMP/$post_url.1.yaml
-    # echo "      " >> $OUTTMP/$post_url.1.yaml
-    # echo "    \\" >> $OUTTMP/$post_url.1.yaml
     cat $post_tmp | sed -e 's/_/\&#95;/g' >> $OUTTMP/$post_url.1.yaml
+    echo "      " >> $OUTTMP/$post_url.1.yaml
     REVPOSTS[${#REVPOSTS[@]}]=$OUTTMP/$post_url.1.yaml
   done
   for (( idx=${#REVPOSTS[@]}-1 ; idx>=0 ; idx-- )) ; do
