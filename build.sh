@@ -22,7 +22,8 @@ postprocess_html() {
 }
 
 no_diff_hacks() {
-  echo ""
+  sed -i -e 's/^\(.*\)post_link\(.*\)<br>\(.*\)$/\1post_link\2<!-- br-->\3/g' \
+    $OUTDIR/index.html
 }
 
 remove_yaml_header() {
@@ -127,6 +128,7 @@ run_build() {
   $PM --metadata-file=$post_list_yaml --template=$edited_default -o- /dev/null \
     | sed -e 's/<\/ br>/<br>/' > $OUTDIR/$INDEX
   postprocess_html $OUTDIR/$INDEX
+  no_diff_hacks
   echo "Done!"
 }
 
