@@ -52,7 +52,7 @@ run_build() {
     outtmp=./$OUTTMP/$file_name.1.markdown
     outtmp2=./$OUTTMP/$file_name.2.html
     outfile=./$OUTDIR/$post_url
-    pandoc --mathjax --metadata date="$post_date" --template=templates/post.html -o $outtmp2 $f
+    pandoc --mathjax --from markdown+backtick_code_blocks --metadata date="$post_date" --template=templates/post.html -o $outtmp2 $f
     echo "---" > $outtmp
     echo "title: $post_title" >> $outtmp
     echo "url: $post_url" >> $outtmp
@@ -60,7 +60,8 @@ run_build() {
     echo "---" >> $outtmp
     cat $outtmp2 >> $outtmp
     sed -i 's/\\/\\\\/g' $outtmp
-    pandoc --template=templates/default.html -o $outfile $outtmp
+    sed -e 's/.*\$body\$.*/$body$/' templates/default.html > $OUTTMP/default.4.html
+    pandoc --template=$OUTTMP/default.4.html -o $outfile $outtmp
     postprocess_html $outfile
   done
 
