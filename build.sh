@@ -102,10 +102,11 @@ run_build() {
 }
 
 run_diff () {
+  TIDY=tidy -i -w 200 -ashtml -utf8 --quiet yes --show-warnings no
   echo "Diffing..."
   for new_f in $OUTDIR/**.html
   do
-    diff <(tidy ${new_f:1}) <(tidy $new_f)
+    diff <($TIDY ${new_f:1}) <($TIDY $new_f)
   done
 }
 
