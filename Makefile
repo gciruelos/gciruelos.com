@@ -1,4 +1,4 @@
-SITE=$(shell find .stack-work/dist -name "site" -type f)
+SITE=$(shell find .stack-work/dist/x86_64-linux-tinfo6 -name "site" -type f)
 
 $(SITE):
 	stack build
