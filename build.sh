@@ -7,6 +7,21 @@ INDEX="index.html"
 TEMPLATES=templates/*
 POSTLIST="templates/post-list.html"
 
+postprocess_html() {
+  sed -i -e 's/href="\/\(.*\)"/href=".\/\1"/g' $1
+  sed -i -e 's/script async/script async="async"/g' $1
+  sed -i -e 's/title="1"/data-line-number="1"/g' $1
+  sed -i -e 's/title="2"/data-line-number="2"/g' $1
+  sed -i -e 's/title="3"/data-line-number="3"/g' $1
+  sed -i -e 's/title="4"/data-line-number="4"/g' $1
+  sed -i -e 's/title="5"/data-line-number="5"/g' $1
+  sed -i -e 's/title="6"/data-line-number="6"/g' $1
+  sed -i -e 's/title="7"/data-line-number="7"/g' $1
+  sed -i -e 's/title="8"/data-line-number="8"/g' $1
+  sed -i -e 's/title="9"/data-line-number="9"/g' $1
+}
+
+
 run_build() {
   rm -r $OUTDIR
   rm -r $OUTTMP
@@ -23,6 +38,7 @@ run_build() {
   # Resolve about page.
   echo "Resolving about..."
   pandoc --template=templates/default.html -o ./$OUTDIR/about.html ./about.markdown
+  postprocess_html ./$OUTDIR/about.html
 
   # Resolve posts.
   echo "Resolving posts..."
@@ -46,6 +62,7 @@ run_build() {
     cat $outtmp2 >> $outtmp
     sed -i 's/\\/\\\\/g' $outtmp
     pandoc --template=templates/default.html -o $outfile $outtmp
+    postprocess_html $outfile
   done
 
 
@@ -96,17 +113,23 @@ run_build() {
   done
   pandoc --mathjax --metadata-file=$post_list_yaml --template=$OUTTMP/default.2.html -o $OUTTMP/index.2.html /dev/null
   cp $OUTTMP/index.2.html $OUTTMP/index.3.html
-  sed -i 's/<\/ br>/<br>/' $OUTTMP/index.3.html
+  sed -i 's/<!-- br-->/<br>/' $OUTTMP/index.3.html
   cp $OUTTMP/index.3.html $OUTDIR/$INDEX
+  postprocess_html $OUTDIR/$INDEX
   echo "Done!"
 }
 
+run_tidy() {
+  #tidy -indent --indent-spaces 2 -w 0 --vertical-space yes --sort-attributes alpha -ashtml -utf8 --quiet yes --show-warnings no $1
+  tidy -config tidy.conf $1 | sed -e "s/^[ \t]*//"
+}
+
 run_diff () {
-  TIDY=tidy -i -w 200 -ashtml -utf8 --quiet yes --show-warnings no
   echo "Diffing..."
   for new_f in $OUTDIR/**.html
   do
-    diff <($TIDY ${new_f:1}) <($TIDY $new_f)
+    echo "Diffing $new_f..."
+    diff <(run_tidy ${new_f:1}) <(run_tidy $new_f)
   done
 }
 
