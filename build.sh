@@ -21,7 +21,6 @@ postprocess_html() {
   sed -i -e 's/title="9"/data-line-number="9"/g' $1
 }
 
-
 run_build() {
   rm -r $OUTDIR
   rm -r $OUTTMP
@@ -48,7 +47,7 @@ run_build() {
     # xargs echo -n trims whitespace.
     post_url=$(head $f | grep "url:" | sed -e "s/url://" | xargs echo -n)
     post_title=$(head $f | grep "title:" | sed -e "s/title://" | xargs echo -n)
-    post_date=$(basename $f .markdown | cut -c-10)
+    post_date=$(basename $f .markdown | cut -c-10 | date '+%B %e, %Y' -d -)
     file_name=$(basename $f .markdown)
     outtmp=./$OUTTMP/$file_name.1.markdown
     outtmp2=./$OUTTMP/$file_name.2.html
@@ -90,7 +89,7 @@ run_build() {
     echo "Resolving index.html for $f..."
     post_url=$(head $f | grep "url:" | sed -e "s/url://" | xargs echo -n)
     post_title=$(head $f | grep "title:" | sed -e "s/title://" | xargs echo -n)
-    post_date=$(basename $f .markdown | cut -c-10)
+    post_date=$(basename $f .markdown | cut -c-10 | date '+%B %e, %Y' -d -)
     #echo "$post_date"
     #echo "$post_title"
     post_tmp=$OUTTMP/post_url.2.markdown
@@ -105,6 +104,8 @@ run_build() {
     echo "  url: $post_url" >> $OUTTMP/$post_url.1.yaml
     echo "  date: $post_date" >> $OUTTMP/$post_url.1.yaml
     echo "  teaser: |" >> $OUTTMP/$post_url.1.yaml
+    # echo "      " >> $OUTTMP/$post_url.1.yaml
+    # echo "    \\" >> $OUTTMP/$post_url.1.yaml
     cat $post_tmp | sed -e 's/_/\&#95;/g' >> $OUTTMP/$post_url.1.yaml
     REVPOSTS[${#REVPOSTS[@]}]=$OUTTMP/$post_url.1.yaml
   done
@@ -113,7 +114,7 @@ run_build() {
   done
   pandoc --mathjax --metadata-file=$post_list_yaml --template=$OUTTMP/default.2.html -o $OUTTMP/index.2.html /dev/null
   cp $OUTTMP/index.2.html $OUTTMP/index.3.html
-  sed -i 's/<!-- br-->/<br>/' $OUTTMP/index.3.html
+  sed -i 's/<\/ br>/<br>/' $OUTTMP/index.3.html
   cp $OUTTMP/index.3.html $OUTDIR/$INDEX
   postprocess_html $OUTDIR/$INDEX
   echo "Done!"
@@ -136,7 +137,7 @@ run_diff () {
 if [ $1 == "build" ];
 then
   run_build
-elif [ $1 == "run" ];
+elif [ $1 == "watch" ];
 then
   run_build
   python -m http.server 9999 --directory $OUTDIR
