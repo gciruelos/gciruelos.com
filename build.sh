@@ -30,17 +30,22 @@ do
   post_url=$(head $f | grep "url:" | sed -e "s/url://" | xargs echo -n)
   post_title=$(head $f | grep "title:" | sed -e "s/title://" | xargs echo -n)
   post_date=$(basename $f .markdown | cut -c-10)
-  outtmp=./$OUTTMP/tmp_$post_url.markdown
-  outtmp2=./$OUTTMP/tmp_$post_url
+  file_name=$(basename $f .markdown)
+  # file_name=$(basename $f .markdown)
+  # outtmp=./$OUTTMP/$file_name.post.1
+  # outtmp2=./$OUTTMP/$file_name.post.2
+  outtmp=./$OUTTMP/$file_name.1.markdown
+  outtmp2=./$OUTTMP/$file_name.2.html
   outfile=./$OUTDIR/$post_url
-  pandoc --metadata date="$post_date" --template=templates/post.html -o $outtmp2 $f
+  pandoc --mathjax --metadata date="$post_date" --template=templates/post.html -o $outtmp2 $f
   echo "---" > $outtmp
   echo "title: $post_title" >> $outtmp
+  echo "url: $post_url" >> $outtmp
   echo "date: $post_date" >> $outtmp
   echo "---" >> $outtmp
   cat $outtmp2 >> $outtmp
   sed -i 's/\\/\\\\/g' $outtmp
-  pandoc --mathjax --template=templates/default.html -o $outfile $outtmp
+  pandoc --template=templates/default.html -o $outfile $outtmp
 done
 
 
@@ -60,29 +65,36 @@ index_title=$(head $INDEX | grep "title:" | sed -e "s/title://" | xargs echo -n)
 post_list=$(basename $POSTLIST .html);
 post_list_yaml=$OUTTMP/$post_list.2.yaml
 sed -e 's/\$title\$//' templates/default.html > $OUTTMP/default.html.1
-sed -e "/\\\$body\\$/{r $OUTTMP/post-list.html.1" -e 'd}' $OUTTMP/default.html.1 > $OUTTMP/default.html.2
+sed -e "/\\\$body\\$/{r $OUTTMP/post-list.html.1" -e 'd}' $OUTTMP/default.html.1 > $OUTTMP/default.2.html
 echo $post_list_yaml
 echo "title: $index_title" >> $post_list_yaml
 echo "posts:" >> $post_list_yaml
-for f in $POSTS
+for f in $OUTTMP/*.1.markdown
 do
+  echo "Resolving index.html for $f..."
   post_url=$(head $f | grep "url:" | sed -e "s/url://" | xargs echo -n)
   post_title=$(head $f | grep "title:" | sed -e "s/title://" | xargs echo -n)
-  post_date=$(basename $f .markdown | cut -c-10)
-  cp $f $OUTTMP/$f.html.2
-  sed -i '0,/^---$/d' $OUTTMP/$f.html.2
-  sed -i '0,/^---$/d' $OUTTMP/$f.html.2
+  post_date=$(basename $f .1.markdown | cut -c-10)
+  echo "$post_date"
+  echo "$post_title"
+  cp $f $OUTTMP/$post_url.html.2
+  sed -i '0,/^---$/d' $OUTTMP/$post_url.html.2
+  sed -i '0,/^---$/d' $OUTTMP/$post_url.html.2
+  sed -i '/<!--more-->/q' $OUTTMP/$post_url.html.2
+  sed -i '1d' $OUTTMP/$post_url.html.2
+  sed -i -e 's/^/    /'  $OUTTMP/$post_url.html.2
+  #sed -i 's/\\/\\\\/g' $OUTTMP/$post_url.html.2
   echo "- title: $post_title" >> $post_list_yaml
   echo "  url: $post_url" >> $post_list_yaml
   echo "  date: $post_date" >> $post_list_yaml
   echo "  teaser: |" >> $post_list_yaml
-  echo "    some stuff" >> $post_list_yaml
-  echo "    some stuff" >> $post_list_yaml
-  echo "    some stuff" >> $post_list_yaml
+  #echo '   ```' >> $post_list_yaml
+  cat $OUTTMP/$post_url.html.2 >> $post_list_yaml
+  #echo '   ```' >> $post_list_yaml
 done
-pandoc --mathjax --metadata-file=$post_list_yaml --template=$OUTTMP/default.html.2 -o $OUTTMP/$INDEX.2 /dev/null
-cp $OUTTMP/$INDEX.2 $OUTDIR/$INDEX
-# sed -i 's/\\/\\\\/g' $outtmp
+pandoc --mathjax --metadata-file=$post_list_yaml --template=$OUTTMP/default.2.html -o $OUTTMP/index.2.html /dev/null
+sed -i 's/\\/\\\\/g' $OUTTMP/index.2.html
+cp $OUTTMP/index.2.html $OUTDIR/$INDEX
 # pandoc --mathjax --template=templates/default.html -o $outfile $outtmp
 
 
