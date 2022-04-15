@@ -47,7 +47,7 @@ run_build() {
     # xargs echo -n trims whitespace.
     post_url=$(head $f | grep "url:" | sed -e "s/url://" | xargs echo -n)
     post_title=$(head $f | grep "title:" | sed -e "s/title://" | xargs echo -n)
-    post_date=$(basename $f .markdown | cut -c-10 | date '+%B %e, %Y' -d -)
+    post_date=$(basename $f .markdown | cut -c-10 | xargs -0 date '+%B %e, %Y' -d)
     file_name=$(basename $f .markdown)
     outtmp=./$OUTTMP/$file_name.1.markdown
     outtmp2=./$OUTTMP/$file_name.2.html
@@ -89,7 +89,7 @@ run_build() {
     echo "Resolving index.html for $f..."
     post_url=$(head $f | grep "url:" | sed -e "s/url://" | xargs echo -n)
     post_title=$(head $f | grep "title:" | sed -e "s/title://" | xargs echo -n)
-    post_date=$(basename $f .markdown | cut -c-10 | date '+%B %e, %Y' -d -)
+    post_date=$(basename $f .markdown | cut -c-10 | xargs -0 date '+%B %e, %Y' -d)
     #echo "$post_date"
     #echo "$post_title"
     post_tmp=$OUTTMP/post_url.2.markdown
