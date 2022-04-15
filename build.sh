@@ -26,6 +26,8 @@ no_diff_hacks() {
     $OUTDIR/index.html
   sed -i -e 's/<span class="ot">=<\/span>/<span class="fu">=<\/span>/g' \
     $OUTDIR/propositions-as-types.html
+  #sed -i -e 's/ i\.e\. / i.e.\&nbsp;/' $OUTDIR/propositions-as-types.html
+  sed -i -e 's/ i\.e\.[^,]/ i.e. /' $OUTDIR/propositions-as-types.html
   sed -i -e 's/href="\//href=".\//g' $OUTDIR/about.html
   # twice to resolve all appearances.
   sed -i -e 's/^\(.*\)sourceLine\(.*\)\\\\\(.*\)$/\1sourceLine\2\\\3/' \
