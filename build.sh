@@ -24,8 +24,8 @@ postprocess_html() {
 no_diff_hacks() {
   sed -i -e 's/^\(.*\)post_link\(.*\)<br>\(.*\)$/\1post_link\2<!-- br-->\3/g' \
     $OUTDIR/index.html
-  # sed -i -e 's/<span class="fu">=<\/span>/<span class="ot">=<\/span>/g' \
-  #   $OUTDIR/propositions-as-types.html
+  sed -i -e 's/<span class="ot">=<\/span>/<span class="fu">=<\/span>/g' \
+    $OUTDIR/propositions-as-types.html
   sed -i -e 's/href="\//href=".\//g' $OUTDIR/about.html
   # twice to resolve all appearances.
   sed -i -e 's/^\(.*\)sourceLine\(.*\)\\\\\(.*\)$/\1sourceLine\2\\\3/' \
