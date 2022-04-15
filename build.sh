@@ -8,6 +8,8 @@ TEMPLATES=templates/*
 POSTLIST="templates/post-list.html"
 
 run_build() {
+  rm -r $OUTDIR
+  rm -r $OUTTMP
   mkdir -p $OUTDIR
   mkdir -p $OUTTMP
 
