@@ -1,0 +1,86 @@
+\documentclass[a4paper, spanish]{article}
+
+\usepackage{tabularx}
+
+%\usepackage{doublespace}
+%\setstretch{1.2}
+
+\usepackage[spanish]{babel}
+\selectlanguage{spanish}
+\usepackage[utf8]{inputenc}
+
+\usepackage{ae}
+\usepackage[T1]{fontenc}
+\usepackage{CV}
+
+\usepackage[top=2in, bottom=1.5in, left=1.5in, right=1.5in]{geometry}
+
+\begin{document}
+
+\pagestyle{empty}
+
+%Ueberschrift
+\begin{center}
+\huge{\textsc{Curriculum Vitae}}
+\vspace{\baselineskip}
+
+\Large{\textsc{Gonzalo Ciruelos Rodríguez}}
+\end{center}
+\vspace{1.5\baselineskip}
+
+\section{Información Personal}
+\begin{flushleft}
+  Nombre: Gonzalo Ciruelos Rodríguez\\
+  %LU: 063/14\\
+  \vspace{0.2cm}
+  Teléfono: 4831-9510 / 153-5722-611\\
+  Dirección: Guemes 4142 3º A - Ciudad Autónoma de Buenos Aires\\
+  Email: gonzalo.ciruelos@gmail.com\\
+  Fecha de nacimiento: 28 de Febrero, 1995
+\end{flushleft}
+
+\section{Educación}
+
+\begin{CV}
+\item[2014--en curso] Licenciatura en Ciencias de la Computación
+\begin{center}
+    \begin{tabular*}{0.75\textwidth}{@{\extracolsep{\fill}} l  r }
+    Materia & Calificación \\ \hline
+    Análisis II (C) & 10 \\
+    Álgebra I & 10\\
+    Demostración Interactiva de Teoremas {\footnotesize [ECI2014T2]} & 10 \\
+    Algoritmos y Estructuras de Datos I & 10\\
+    Probabilidades y Estadística (C) & 10\\
+    Taller de Cálculo Avanzado & Aprobada\\
+    \end{tabular*}
+\end{center}
+\item[2013--2013] Ciclo Básico Común - Promedio 9.50
+%\item[2008--2012] Instituto Libre de Segunda Enseñanza - Bachiller
+
+
+
+\end{CV}
+
+
+\vspace{2\baselineskip}
+\noindent Buenos Aires, \today
+
+
+
+\end{document}
+
+%Tabellen
+\begin{table}[htbp] \centering%
+\begin{tabular}{lll}\hline\hline
+1 & 2 & 3 \\ \hline
+1 & \multicolumn{2}{c}{2} \\
+\hline
+\end{tabular}
+\caption{Titel\label{Tabelle: Label}}
+\end{table}
+
+
+
+
+
+
