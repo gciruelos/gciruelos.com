@@ -4,17 +4,20 @@ import           Data.Monoid (mappend)
 import           Hakyll
 import qualified Data.Set as S
 import           Text.Pandoc.Options
+import           System.FilePath     (pathSeparator, normalise, splitPath)
 --------------------------------------------------------------------------------
 
-sacarBarra [] = []
-sacarBarra ('/':xs) = xs
-sacarBarra (x:xs) = sacarBarra xs
+removeSlash [] = []
+removeSlash ('/':xs) = xs
+removeSlash (x:xs) = removeSlash xs
 
-sacarFecha = drop 11
+removeAllSlashes x = if removeSlash x == x then x else removeAllSlashes (removeSlash x)
+
+removeDate = drop 11
 
 htmlExtension xs = (takeWhile (/='.') xs) ++ ".html"
 
-urlPosts = sacarFecha . sacarBarra . htmlExtension
+urlPosts = removeDate . removeSlash . htmlExtension
 
 main :: IO ()
 main = hakyll $ do
@@ -44,6 +47,10 @@ main = hakyll $ do
 
     match (fromList ["robots.txt", "favicon.ico"]) $ do
         route   idRoute
+        compile copyFileCompiler
+
+    match (fromList ["cv/resume.pdf"]) $ do
+        route   $ customRoute $ normalise . last . splitPath . toFilePath
         compile copyFileCompiler
 
     match (fromList ["about.markdown"]) $ do

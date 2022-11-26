@@ -18,6 +18,11 @@ Compile everyting:
     stack build
     make build
 
+Alternatively
+
+    stack build
+    make build
+
 If cabal fails:
 
     dd if=/dev/zero of=/tmp/swap bs=1M count=1024
