@@ -6,4 +6,4 @@ cv-en:
 	pdflatex cv-en.tex
 
 clean:
-	rm -f *.log *.pdf *.aux *.out *.xml
+	rm -f *.log *.pdf *.aux *.out *.xml *.bcf
