@@ -91,7 +91,6 @@ run_build() {
     postprocess_html $OUTDIR/$post_url
   done
 
-
   # Resolve index.
   echo "Resolving index..."
   index_tmp=$OUTTMP/index.1.html
@@ -127,6 +126,7 @@ run_build() {
     echo "- title: $(get_post_title $f)" >> $teaseryaml
     echo "  url: $post_url" >> $teaseryaml
     echo "  date: $post_date" >> $teaseryaml
+    echo "  date822: $(date -d "$post_date" -u +"%a, %d %b %Y %H:%M:%S GMT")" >> $teaseryaml
     echo "  teaser: |" >> $teaseryaml
     sed -e 's/_/\&#95;/g' $teasermd >> $teaseryaml
     echo "      " >> $teaseryaml
@@ -139,6 +139,16 @@ run_build() {
   $PM --metadata-file=$post_list_yaml --template=$edited_default -o- /dev/null \
     | sed -e 's/<\/ br>/<br>/' > $OUTDIR/$INDEX
   postprocess_html $OUTDIR/$INDEX
+
+  # Resolve feed.xml.
+  echo "Resolving feed.xml"
+  cp templates/feed.xml $OUTTMP/feed.1.xml
+  for field in url title date822 teaser
+  do
+    sed -i "s/\\\$$field\\$/\$posts.$field\$/"  $OUTTMP/feed.1.xml
+  done
+  $PM --metadata-file=$post_list_yaml --template=$OUTTMP/feed.1.xml -o- /dev/null > $OUTDIR/feed.xml
+
   no_diff_hacks
   echo "Done!"
 }

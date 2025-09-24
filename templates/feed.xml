@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+  <channel>
+    <title>gciruelos.com</title>
+    <link>https://www.gciruelos.com</link>
+    <description>Blog</description>
+    $for(posts)$
+    <item>
+      <title>$title$</title>
+      <link>https://gciruelos.com/$url$</link>
+      <description>![CDATA[$teaser$]]</description>
+      <pubDate>$date822$</pubDate>
+    </item>
+    $endfor$
+  </channel>
+</rss>
