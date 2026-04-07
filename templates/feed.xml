@@ -8,7 +8,7 @@
     <item>
       <title>$title$</title>
       <link>https://gciruelos.com/$url$</link>
-      <description>![CDATA[$teaser$]]</description>
+      <description><![CDATA[$teaser$]]></description>
       <pubDate>$date822$</pubDate>
     </item>
     $endfor$
