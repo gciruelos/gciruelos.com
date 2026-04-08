@@ -16,6 +16,8 @@ site
 _site/
 __site/
 __site_tmp/
+__diff_head/
+__diff_origin/
 
 # stack
 .stack-work
