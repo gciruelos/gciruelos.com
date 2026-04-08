@@ -90,6 +90,7 @@ run_build() {
     echo "---" >> $outtmp
     $PM --metadata date="$post_date" --template=$POST -o- $f >> $outtmp
     sed -i 's/\\/\\\\/g' $outtmp
+    sed -i 's/_/\\_/g' $outtmp
     sed -e 's/.*\$body\$.*/$body$/' $TEMPLATE > $OUTTMP/default.4.html
     $P --template=$OUTTMP/default.4.html -o $OUTDIR/$post_url $outtmp
     postprocess_html $OUTDIR/$post_url
