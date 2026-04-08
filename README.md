@@ -1,32 +1,25 @@
-Update the repository:
+# gciruelos.com
 
-    cd gciruelos.com
-    git pull
+Bash static site generator. Converts Markdown posts into HTML + RSS.
 
-Clone if it doesn't exist:
+## Build
 
-    git clone ???
+```bash
+make build    # Build the site (output in __site/)
+make watch    # Build and serve locally on port 9999
+make diff     # Compare generated site at HEAD vs origin/master
+make clean    # Remove build artifacts
+```
 
+**Dependencies**: Pandoc, HTML Tidy, GNU sed, Python 3.
 
-Compile everyting:
+## Post format
 
-    cabal sandbox init
-    cabal update
-    cabal install --only-dependencies
-    cabal configure
-    cabal build
-    stack build
-    make build
-
-Alternatively
-
-    stack build
-    make build
-
-If cabal fails:
-
-    dd if=/dev/zero of=/tmp/swap bs=1M count=1024
-    mkswap /tmp/swap
-    sudo swapon /tmp/swap
-
-And add parameter `-j` to parallelize.
+Posts live in `posts/` as `.markdown` files:
+```
+---
+title: Post Title
+url: /blog/post-slug.html
+---
+```
+Filename date prefix (e.g. `2025-10-05-`) determines the post date. `<!--more-->` marks the end of the index page teaser.

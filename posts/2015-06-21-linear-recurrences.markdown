@@ -15,7 +15,7 @@ A linear recurrence is a linear equation that recursively defines a sequence. An
 In general, a linear recurrence is a sequence \\(\\{a_n\\}_n\\) given by base cases and equations
 
 \\[a_1 = x_1\\]
-\\[a_2 = x_k\\]
+\\[a_2 = x_2\\]
 \\[...\\]
 \\[a_k = x_k\\]
 \\[a_n = b_1 a_{n-1} + ... + b_k a_{n-k}\\]
@@ -79,7 +79,7 @@ General Case
 ------------
 You may be asking what happens in general, for every linear recurrence relation, i.e., something like:
 
-\\[a_1 = x_1, a_2 = x_k, ..., a_k = x_k\\]
+\\[a_1 = x_1, a_2 = x_2, ..., a_k = x_k\\]
 \\[a_n = b_1 a_{n-1} + ... + b_k a_{n-k}\\]
 
 
@@ -107,7 +107,7 @@ I will call this matrix the "generating matrix" of the linear recurrence. This m
 
 Now, as before, we diagonalize and solve the problem. But, what if the matrix is not diagonalizable? Well, then we can use Jordan normal form, for which there is a closed formula for powers.
 
-It is interesting to see that a really simple tool of linear algebra helped us solving a family of often-ocurring problems.
+It is interesting to see that a really simple tool of linear algebra helped us solving a family of often-occurring problems.
 
 Another interesting thing I can talk about, is what happens with eigenspaces. Let \\(C\\) be the generating matrix of some linear recurrence, what happens if \\((a_1, a_2, ..., a_k)\\), the vector formed by the first terms of the sequence, is an eigenvector?
 
@@ -119,7 +119,7 @@ Where \\(\\lambda\\) is a number. So then we are done.
 
 This allows us to take it even further, because if the generating matrix is diagonalizable, then we can write the whole space as a direct sum of eigenspaces, so we can decompose our vector of first terms in eigenvectors, do the aforementioned calculation, and then sum up all the results. This is one of the reasons why diagonalizable matrices are great, because every vector of the space is a linear combination of eigenvectors.
 
-Another application of linear recurrences are differential equations. Linear differential equations can be solved using exactly the same method we used to solve linear recurrences. As you can probably imagine, this is very useful in physics, becase several families of problems are solved using linear differential equations, and we have a general method to solve them. 
+Another application of linear recurrences are differential equations. Linear differential equations can be solved using exactly the same method we used to solve linear recurrences. As you can probably imagine, this is very useful in physics, because several families of problems are solved using linear differential equations, and we have a general method to solve them. 
 
 
 

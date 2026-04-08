@@ -248,6 +248,7 @@ The dividend is fixed at CHF 15 per share by statute; the equity behind it is CH
 The premium exists because the market assigns a small but non-zero probability to a government-triggered event that would force a distribution above the CHF 15 annual coupon.
 That probability is what the z-spread measures: when it falls, the market is pricing in more; when it rises, less.
 History suggests the market gets this wrong at the extremes (most dramatically in 1997 and 2017-2018) and right on average.
+Given current legislation, the market appears to overestimate the likelihood of generous compensation in a nationalization scenario: the statutory framework caps shareholder entitlements well below the per-share book value, and nothing in the political landscape suggests an imminent change.
 
 ## Epilogue
 

@@ -3,7 +3,7 @@ title: XOR
 url: xor.html
 ---
 
-In this post we will talk about xor. Xor is a logical operator that outputs  *true* when the two input values are different, and *false* otherwise. It is usually simbolized with \\(\\oplus\\).
+In this post we will talk about xor. Xor is a logical operator that outputs  *true* when the two input values are different, and *false* otherwise. It is usually symbolized with \\(\\oplus\\).
 
 <!--more-->
 
@@ -42,7 +42,7 @@ Now we can xor all those positive integers, like
 
 \\[p_1 \\oplus p_2 \\oplus ... \\oplus p_i \\oplus ...\\oplus p_N\\]
 
-As \\(\\oplus\\) is commutative and associative, we can group every two elements that are equal toghether, so we end up with
+As \\(\\oplus\\) is commutative and associative, we can group every two elements that are equal together, so we end up with
 
 \\[(p_1 \\oplus p_1) \\oplus ... \\oplus (p_N \\oplus p_N) \\oplus p_i\\] 
 \\[ = 0 \\oplus ... \\oplus 0 \\oplus p_i\\]
@@ -118,7 +118,7 @@ The **Sprague-Grundy theorem** says that \\(g((G_1, G_2)) = g(G_1) \\oplus g(G_2
 XOR cipher
 ----------
 
-Using the same properties we used over and over again throughout this post, we can desing a cipher to encode messages.
+Using the same properties we used over and over again throughout this post, we can design a cipher to encode messages.
 Suppose you have your message written in a chain of 0's and 1's called \\(M\\). You can choose a random chain of 0's and 1's of the same length \\(X\\) (the key), and bitwise xor them, so \\(E = M \\oplus X\\).
 
 So \\(E\\) is the encoded message. Then, if you want to decode it, all you have to do is xor it with \\(X\\).
