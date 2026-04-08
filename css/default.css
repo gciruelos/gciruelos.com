@@ -94,7 +94,12 @@ div#content {
   font-family: 'PT Sans';
   font-size: 100%;
   line-height: 1.25em;
+}
 
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 div.info {

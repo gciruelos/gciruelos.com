@@ -43,7 +43,8 @@ remove_yaml_header() {
 }
 
 get_post_date() {
-  basename $1 .markdown | cut -c-10 | xargs -0 date '+%B %e, %Y' -d
+  date_str=$(basename $1 .markdown | cut -c-10)
+  date -d "$date_str" '+%B %e, %Y' 2>/dev/null || date -j -f "%Y-%m-%d" "$date_str" '+%B %e, %Y'
 }
 # xargs echo -n trims whitespace.
 get_post_title() {
@@ -63,7 +64,7 @@ run_build() {
   echo "Resolving verbatim files..."
   for f in "${IDENTITY[@]}"
   do
-    cp -R --parents $f $OUTDIR;
+    mkdir -p "$OUTDIR/$(dirname "$f")" && cp -R "$f" "$OUTDIR/$f";
   done
 
   # Resolve about page.
@@ -126,7 +127,9 @@ run_build() {
     echo "- title: $(get_post_title $f)" >> $teaseryaml
     echo "  url: $post_url" >> $teaseryaml
     echo "  date: $post_date" >> $teaseryaml
-    echo "  date822: $(date -d "$post_date" -u +"%a, %d %b %Y %H:%M:%S GMT")" >> $teaseryaml
+    date_str=$(basename $f .markdown | cut -c-10)
+    date822=$(date -d "$date_str" -u +"%a, %d %b %Y %H:%M:%S GMT" 2>/dev/null || date -j -u -f "%Y-%m-%d" "$date_str" +"%a, %d %b %Y %H:%M:%S GMT")
+    echo "  date822: $date822" >> $teaseryaml
     echo "  teaser: |" >> $teaseryaml
     sed -e 's/_/\&#95;/g' $teasermd >> $teaseryaml
     echo "      " >> $teaseryaml

@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<rss version="2.0">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>gciruelos.com</title>
     <link>https://www.gciruelos.com</link>
     <description>Blog</description>
+    <atom:link href="https://gciruelos.com/feed.xml" rel="self" type="application/rss+xml" />
     $for(posts)$
     <item>
       <title>$title$</title>
       <link>https://gciruelos.com/$url$</link>
-      <description>![CDATA[$teaser$]]</description>
+      <guid>https://gciruelos.com/$url$</guid>
+      <description><![CDATA[$teaser$]]></description>
       <pubDate>$date822$</pubDate>
     </item>
     $endfor$
