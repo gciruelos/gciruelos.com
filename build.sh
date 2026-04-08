@@ -162,7 +162,7 @@ run_diff () {
   for new_f in $OUTDIR/**.html
   do
     echo "Diffing $new_f..."
-    diff <(run_tidy ${new_f:1}) <(run_tidy $new_f)
+    diff -u <(run_tidy ${new_f:1}) <(run_tidy $new_f)
   done
 }
 
