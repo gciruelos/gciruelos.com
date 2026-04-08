@@ -62,9 +62,12 @@ run_build() {
 
   # Resolve files that are copied verbatim.
   echo "Resolving verbatim files..."
-  for f in "${IDENTITY[@]}"
+  for pattern in "${IDENTITY[@]}"
   do
-    mkdir -p "$OUTDIR/$(dirname "$f")" && cp -R "$f" "$OUTDIR/$f";
+    for f in $pattern
+    do
+      mkdir -p "$OUTDIR/$(dirname "$f")" && cp -R "$f" "$OUTDIR/$f";
+    done
   done
 
   # Resolve about page.
