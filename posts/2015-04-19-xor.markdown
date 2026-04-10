@@ -19,7 +19,7 @@ First we should see some of the properties of \\(\\oplus\\).
 * \\(x \\oplus y = y \\oplus x \\)
 * \\((x \\oplus y) \\oplus z = x \\oplus (y \\oplus z)\\)
 
-All of these are really simple to prove. Note that these properties implies that \\((\\mathbb{N}, \\oplus)\\) is an abelian group. More on this later.
+All of these are really simple to prove. Note that these properties imply that \\((\\mathbb{N}, \\oplus)\\) is an abelian group. More on this later.
 
 OLOLO
 -----

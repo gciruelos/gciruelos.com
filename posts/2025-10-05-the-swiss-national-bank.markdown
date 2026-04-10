@@ -5,7 +5,7 @@ url: the-swiss-national-bank.html
 
 The Bank of England, the Banque de France, the Reserve Bank of India: all started as private corporations and were nationalized over the course of the twentieth century.
 The Swiss National Bank, founded in 1907, never was.
-Its shares still trade on the SIX Swiss Exchange under the ticker SNBN.
+Its shares still trade on the SIX Swiss Exchange.
 
 <!--more-->
 
@@ -31,7 +31,7 @@ The SNB has paid its CHF 15 dividend every year since 1907 except in 2013, 2022,
 ## The share
 
 Shares of the SNB trade on the SIX Swiss Exchange as SNBN.
-Typically not more than 50 shares exchange hands per day, and the average bid-ask spread is ~2.7%.
+Typically not more than 50 shares change hands per day, and the average bid-ask spread is ~2.7%.
 With ~25,000 privately held shares and such thin volume, an illiquidity discount would in principle apply; in practice the share has historically traded at a premium to the fair value, suggesting any illiquidity discount is more than offset by other premia.
 As of late 2025, the price stands above CHF 3'000, which prompts the question, how much are these shares really worth?
 

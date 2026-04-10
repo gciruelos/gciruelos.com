@@ -48,7 +48,7 @@ Now, you should have noticed that there is something missing on the first table:
 |:-----------------------------------:|:------------------------:|:----------------:|
 |     \\(\\neg A \\)                 |  \\(A \\to 0\\) | `a -> Void` |
 
-This arises some questions. First, what is \\(0\\)? Then, why is that defined like that? And lastly, how is `Void` defined in Haskell?
+This raises some questions. First, what is \\(0\\)? Then, why is that defined like that? And lastly, how is `Void` defined in Haskell?
 
 The first question is easily answered, \\(0\\) is the type that has no constructors. So there is no way to make up an inhabitant of \\(0\\). Now, why is negation defined like that? Simply because it makes sense. Lastly, how is the Void type defined in haskell? Well, it is the type with no constructors, so
 ```haskell
@@ -62,9 +62,9 @@ proof :: a -> (a -> Void) -> Void
 proof = \a -> \f -> f a
 ```
 Note that in the same fashion we can prove ```a -> (a -> b) -> b```. In the language of type theory, that proof would be:
-\\[ \\lambda a : A . \\lambda f : A \\to B .f(b) \\ \\ :\\ \\  A \\to ((A \\to B) \\to B) \\]
+\\[ \\lambda a : A . \\lambda f : A \\to B .f(a) \\ \\ :\\ \\  A \\to ((A \\to B) \\to B) \\]
 
-Now let's try to prove the Law of Excluded Middle (LEM henceforth), i.e. \\(p \\vee \\neg p\\). In the language of type thoery, we have to give an inhabitant of \\(A + (A \\to 0)), but this is impossible in general. If you want to get convinced of that, try to give an element of type ```Either a (a -> Void)``` in Haskell. It is impossible, becuase it would be something like ```Left x``` where ```x :: a``` or ```Right y``` where ```y :: a -> Void```. 
+Now let's try to prove the Law of Excluded Middle (LEM henceforth), i.e. \\(p \\vee \\neg p\\). In the language of type theory, we have to give an inhabitant of \\(A + (A \\to 0)), but this is impossible in general. If you want to get convinced of that, try to give an element of type ```Either a (a -> Void)``` in Haskell. It is impossible, because it would be something like ```Left x``` where ```x :: a``` or ```Right y``` where ```y :: a -> Void```. 
 
 This gives you some intuition on why Type Theory is not isomorphic with classical logic, but rather intuitionistic, or **constructive logic**. For a detailed proof you can see [1]. But this actually makes sense, because semantics of classical propositional formulas are defined in terms of truth values (true and false), and semantics of intuitionistic formulas (can be) defined in terms of provability. 
 
@@ -81,7 +81,7 @@ So basically we have to start defining types and proving things about them. To p
 \\[ s : \\mathbb{N} \\to \\mathbb{N} \\]
 \\[ ind_{\\mathbb{N}}(P) : P(0) \\to (\\prod_{n : \\mathbb{N}} P(n) \\to P(s(n))) \to \\prod_{n : \\mathbb{N}} P(n)\\]
 
-This is literally the induction on the naturals. Prove the base case, then prove that vor every natural \\(P(n)\\) implies \\(P(n+1)\\) and then you are done. For more on induction, refer to [3].
+This is literally the induction on the naturals. Prove the base case, then prove that for every natural \\(P(n)\\) implies \\(P(n+1)\\) and then you are done. For more on induction, refer to [3].
 
 
 Homotopy Type Theory
@@ -90,7 +90,7 @@ Homotopy Type Theory
 Until now, we have talked about intuitionistic type theory, developed by Per Martin-Löf, but this applies more or less to all type theories (like simply typed lambda calculus or calculus of constructions).
 But it is worth to mention the case of HoTT. HoTT is an intensional type theory [(i.e. makes a difference between definitional equality and the equality type, thus admitting a higher-dimensional interpretation of the latter).] [3]
 
-In HoTT not all types can be interpreted as propositions. This is due to the higher-dimensional interpretation we talked about, as types can contan more information than mere provability. So we would like to restrict types that we can interpret as propositions.
+In HoTT not all types can be interpreted as propositions. This is due to the higher-dimensional interpretation we talked about, as types can contain more information than mere provability. So we would like to restrict types that we can interpret as propositions.
 This is the definition:
 
 \\[isProp(P) :\\equiv \\prod_{x,y:P} (x=y)\\]
@@ -127,6 +127,6 @@ References
 
 \[1\] Sørenson, Morten; Urzyczyn, Paweł, *Lectures on the Curry-Howard Isomorphism*. Chapter 4
 
-\[2\] [Calculus of Indutive Constructions](https://coq.inria.fr/refman/Reference-Manual006.html)
+\[2\] [Calculus of Inductive Constructions](https://coq.inria.fr/refman/Reference-Manual006.html)
 
 \[3\] *Homotopy Type Theory*. Chapter 1

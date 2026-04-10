@@ -99,7 +99,7 @@ Given \\(a_k\\) binary code and \\(n\\), we want to show that we can choose a su
 
 Take \\(l\\), and suppose with all \\(\\{a_0, ..., a_l\\}\\) we can represent \\(\\{1, ..., m\\}\\) where \\(m = \\sum_{i\\leq l} a_i\\)
 
-Then \\(a_l < a_{l+1} \\leq m+1 \\), so the representable numbers are \\(\\{1, ..., m, m+1, ..., m+a_{l+1}\\}\\). Suppose \\(m < n \\leq m + a_{l+1} \\). (We actually choose \\(l\\) so that it fulfills that requierement).
+Then \\(a_l < a_{l+1} \\leq m+1 \\), so the representable numbers are \\(\\{1, ..., m, m+1, ..., m+a_{l+1}\\}\\). Suppose \\(m < n \\leq m + a_{l+1} \\). (We actually choose \\(l\\) so that it fulfills that requirement).
 
 Now there are two cases, the last \\(a_k\\) before \\(n\\) is \\(a_{l+1}\\) or it is greater than it.
 
